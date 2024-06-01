@@ -1,0 +1,143 @@
+/* Style for the overlay background */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */
+    z-index: 1000; /* ensure it's above other content */
+  }
+  
+  /* Style for the popup container */
+  .popup-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 1001; /* ensure it's above the overlay */
+  }
+  
+  /* Optional: Close button style */
+  .popup-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
+  
+  .main-button-red a {
+    background-color: rgb(146, 14, 14);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px; /* Adjust the value to change the roundness of the buttons */
+    display: inline-block;
+    text-decoration: none;
+    margin-bottom: 10px;
+  }
+  
+  .main-button-red a:hover {
+    background-color: rgb(114, 3, 3); /* Change the color on hover if needed */
+  }
+
+  .form-horizontal button {
+    background-color: rgb(146, 14, 14);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px; /* Adjust the value to change the roundness of the buttons */
+    display: inline-block;
+    text-decoration: none;
+    margin-bottom: 10px;
+  }
+  
+  .form-horizontal button:hover {
+    background-color: rgb(114, 3, 3); /* Change the color on hover if needed */
+  }
+
+
+  .popup-container form .btn.signin,
+.popup-container form .popup-close {
+  display: inline-block;
+  margin-right: 10px; /* Adjust the margin as needed */
+}
+
+.popup-container form .popup-close {
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 20px; /* Adjust the value to change the roundness of the button */
+  padding: 10px 20px;
+}
+
+
+.popup-container.wider {
+  max-width: 600px; /* Adjust the max-width as needed */
+  width: 80%; /* Adjust the width as needed */
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translate(0, -50%);
+  margin: 0;
+}
+
+.button-group {
+  text-align: left; /* Align buttons to the left */
+}
+
+.button-group button {
+  margin: 0 5px; /* Add space between buttons */
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  width: 400px;
+}
+
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.popup-header h2 {
+  margin: 0;
+}
+
+.popup-body {
+  padding-top: 20px;
+}
+
+.user-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.user-card {
+  background-color: #f4f4f4;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.user-card p {
+  margin: 0;
+}

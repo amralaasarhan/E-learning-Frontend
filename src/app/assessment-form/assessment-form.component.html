@@ -1,0 +1,29 @@
+<div *ngFor="let question of assessment.questions; let i = index" class="question-container">
+    <h2>Question {{ i + 1 }}:</h2>
+    <textarea [value]="question.QUESTION" disabled class="question-textarea"></textarea>
+    
+    <ng-container *ngIf="question.QUESTION_TYPE === 'MCQ'">
+      <div *ngFor="let answer of ['a', 'b', 'c', 'd']; let j = index">
+        <input type="radio" id="answer{{i}}{{j}}" name="answer{{i}}" [value]="question['ANSWER_' + (j + 1)]" [(ngModel)]="selectedAnswers[i]" class="answer-radio">
+        <label for="answer{{i}}{{j}}" class="answer-label">{{ answer.toUpperCase() }}. {{ question['ANSWER_' + (j + 1)] }}</label>
+      </div>
+    </ng-container>
+    
+    <ng-container *ngIf="question.QUESTION_TYPE === 'TrueFalse'">
+      <label>
+        <input type="radio" name="answer{{i}}" value="True" [(ngModel)]="selectedAnswers[i]" class="answer-radio"> True
+      </label>
+      <label>
+        <input type="radio" name="answer{{i}}" value="False" [(ngModel)]="selectedAnswers[i]" class="answer-radio"> False
+      </label>
+    </ng-container>
+    
+    <ng-container *ngIf="question.QUESTION_TYPE === 'Essay'">
+      <textarea name="answer{{i}}" rows="4" cols="50" [(ngModel)]="selectedAnswers[i]" class="essay-textarea"></textarea>
+    </ng-container>
+    
+    <hr class="line-separator">
+  </div>
+  
+  <button (click)="submitForm()" class="submit-button">Submit</button>
+  

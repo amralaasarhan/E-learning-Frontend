@@ -1,0 +1,21 @@
+<div *ngIf="feedbackData" class="container">
+    <h2>Survey Feedback Analysis</h2>
+    <p><strong>Average Sentiment Score:</strong> {{ feedbackData.average_sentiment_score }}</p>
+    <p><strong>Positive Feedback:</strong> {{ feedbackData.positive_percentage }}%</p>
+    <p><strong>Neutral Feedback:</strong> {{ feedbackData.neutral_percentage }}%</p>
+    <p><strong>Negative Feedback:</strong> {{ feedbackData.negative_percentage }}%</p>
+    <p><strong>Overall Sentiment:</strong> {{ feedbackData.overall_sentiment }}</p>
+  
+    <div *ngFor="let feedback of feedbackData.feedbacks" class="feedback-section">
+      <h3>Feedback ID: {{ feedback.FEEDBACK_ID }}</h3>
+      <p><strong>Student ID:</strong> {{ feedback.STUDENT_ID_FK }}</p>
+      <p><strong>Date:</strong> {{ feedback.date | date }}</p>
+      <div *ngFor="let answer of feedback.answers">
+        <p><strong>Question ID:</strong> {{ answer.QUESTION_ID_FK }}</p>
+        <p><strong>Answer:</strong> {{ answer.ANSWER }}</p>
+        <p><strong>Sentiment Score:</strong> {{ answer.sentiment_score }}</p>
+      </div>
+      <hr>
+    </div>
+  </div>
+  

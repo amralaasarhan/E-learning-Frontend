@@ -1,0 +1,57 @@
+.btn-primary,
+.btn-danger {
+    background-color: rgb(104, 9, 9);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    /* Adjust the value to change the roundness of the buttons */
+    display: inline-block;
+    text-decoration: none;
+    margin-bottom: 10px;
+    border: none; /* Remove default button border */
+}
+
+.btn-primary:hover,
+.btn-danger:hover {
+    background-color: rgb(114, 3, 3);
+}
+
+/* Additional styling for form elements */
+.form-card {
+    background-color: #f8f9fa;
+    /* Light gray background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Box shadow for card */
+}
+
+.form-control-label {
+    font-weight: bold;
+    text-align: left; /* Align form labels to the left */
+}
+
+textarea {
+    min-height: 100px;
+    /* Adjust the height of the textarea */
+}
+
+/* Remove borders from input fields */
+input[type="text"],
+textarea {
+    border: none;
+    border-radius: 0;
+    /* Ensure no rounded corners */
+    padding: 10px;
+    /* Adjust padding as needed */
+    background-color: #fff;
+    /* Set background color */
+    box-shadow: none;
+    /* Remove any box shadow */
+}
+
+/* Add spacing around the button */
+.btn-block {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

@@ -1,0 +1,224 @@
+.ag-format-container {
+  width: 1142px;
+  margin: 0 auto;
+}
+
+body {
+  background-image: url('../../../../assets/images/pinkBlueBG.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+.ag-title {
+  color: white;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.ag-courses_box {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 50px 0;
+}
+
+.ag-courses_item {
+  flex-basis: calc(33.33333% - 30px);
+  margin: 0 15px 30px;
+  overflow: hidden;
+  border-radius: 28px;
+}
+
+.ag-courses-item_link {
+  display: block;
+  padding: 30px 20px;
+  background-color: #121212;
+  overflow: hidden;
+  position: relative;
+}
+
+.ag-courses-item_link:hover,
+.ag-courses-item_link:hover .ag-courses-item_date {
+  text-decoration: none;
+  color: #fff;
+}
+
+.ag-courses-item_link:hover .ag-courses-item_bg {
+  transform: scale(10);
+}
+
+.ag-courses-item_title {
+  height: 150px;
+  margin: 0 0 25px;
+  overflow: hidden;
+  font-weight: bold;
+  font-size: 20px;
+  color: #fff;
+  z-index: 2;
+  position: relative;
+}
+
+.ag-courses-item_date-box {
+  font-size: 18px;
+  color: #fff;
+  z-index: 2;
+  position: relative;
+}
+
+.ag-courses-item_date {
+  font-weight: bold;
+  color: #f9b234;
+  transition: color 0.5s ease;
+}
+
+.ag-courses-item_bg {
+  height: 128px;
+  width: 128px;
+  background-color: #f9b234;
+  z-index: 1;
+  position: absolute;
+  top: -75px;
+  right: -75px;
+  border-radius: 50%;
+  transition: all 0.5s ease;
+}
+
+.ag-courses_item:nth-child(2n) .ag-courses-item_bg {
+  background-color: #3ecd5e;
+}
+
+.ag-courses_item:nth-child(3n) .ag-courses-item_bg {
+  background-color: #e44002;
+}
+
+.ag-courses_item:nth-child(4n) .ag-courses-item_bg {
+  background-color: #952aff;
+}
+
+.ag-courses_item:nth-child(5n) .ag-courses-item_bg {
+  background-color: #cd3e94;
+}
+
+.ag-courses_item:nth-child(6n) .ag-courses-item_bg {
+  background-color: #4c49ea;
+}
+
+.ag-courses_item:nth-child(7n) .ag-courses-item_bg {
+  background-color: #ffa500;
+  /* Orange */
+}
+
+.ag-courses_item:nth-child(8n) .ag-courses-item_bg {
+  background-color: #00ffff;
+  /* Cyan */
+}
+
+.ag-courses_item:nth-child(9n) .ag-courses-item_bg {
+  background-color: #800080;
+  /* Purple */
+}
+
+.ag-courses_item:nth-child(10n) .ag-courses-item_bg {
+  background-color: #ff00ff;
+  /* Magenta */
+}
+
+.ag-courses_item:nth-child(11n) .ag-courses-item_bg {
+  background-color: #008000;
+  /* Green */
+}
+
+.ag-courses_item:nth-child(12n) .ag-courses-item_bg {
+  background-color: #ffff00;
+  /* Yellow */
+}
+
+.ag-courses_item:nth-child(13n) .ag-courses-item_bg {
+  background-color: #00ff00;
+  /* Lime */
+}
+
+.ag-courses_item:nth-child(14n) .ag-courses-item_bg {
+  background-color: #ff00ff;
+  /* Fuchsia */
+}
+
+.ag-courses_item:nth-child(15n) .ag-courses-item_bg {
+  background-color: #800000;
+  /* Maroon */
+}
+
+.ag-courses_item:nth-child(16n) .ag-courses-item_bg {
+  background-color: #008080;
+  /* Teal */
+}
+
+.ag-courses_item:nth-child(17n) .ag-courses-item_bg {
+  background-color: #000080;
+  /* Navy */
+}
+
+.ag-courses_item:nth-child(18n) .ag-courses-item_bg {
+  background-color: #cd3e94;
+}
+
+.ag-courses_item:nth-child(19n) .ag-courses-item_bg {
+  background-color: #ff7f50;
+  /* Coral */
+}
+
+.ag-courses_item:nth-child(20n) .ag-courses-item_bg {
+  background-color: #808000;
+  /* Olive */
+}
+
+.ag-courses_item:nth-child(21n) .ag-courses-item_bg {
+  background-color: #20b2aa;
+  /* LightSeaGreen */
+}
+
+.ag-courses_item:nth-child(22n) .ag-courses-item_bg {
+  background-color: #87ceeb;
+  /* SkyBlue */
+}
+
+.ag-courses_item:nth-child(23n) .ag-courses-item_bg {
+  background-color: #f08080;
+  /* LightCoral */
+}
+
+.ag-courses_item:nth-child(24n) .ag-courses-item_bg {
+  background-color: #ffd700;
+  /* Gold */
+}
+
+.ag-courses_item:nth-child(25n) .ag-courses-item_bg {
+  background-color: #4682b4;
+  /* SteelBlue */
+}
+
+.ag-courses_item:nth-child(26n) .ag-courses-item_bg {
+  background-color: #ffa07a;
+  /* LightSalmon */
+}
+
+.ag-courses_item:nth-child(27n) .ag-courses-item_bg {
+  background-color: #f0e68c;
+  /* Khaki */
+}
+
+.ag-courses_item:nth-child(28n) .ag-courses-item_bg {
+  background-color: #dda0dd;
+  /* Plum */
+}
+
+.ag-courses_item:nth-child(29n) .ag-courses-item_bg {
+  background-color: #ff6347;
+  /* Tomato */
+}
+
+.ag-courses_item:nth-child(30n) .ag-courses-item_bg {
+  background-color: #778899;
+  /* LightSlateGray */
+}

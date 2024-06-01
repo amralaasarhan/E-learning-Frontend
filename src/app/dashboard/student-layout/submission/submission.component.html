@@ -1,0 +1,22 @@
+<div class="upload-section">
+  <h2>Upload Submission</h2>
+  <form class="submission-form" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+          <label for="file">Select File:</label>
+          <input type="file" id="file" name="file" class="form-control" (change)="onFileSelected($event)" accept=".pdf" required>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="subID!=-1">Upload Submission</button>
+  </form>
+  <button class="btn btn-danger" (click)="onDelete()" [disabled]="subID==-1">Delete Submission</button>
+</div>
+
+<div class="update-section">
+  <h2>Update File</h2>
+  <form class="submission-form" (ngSubmit)="onUpdateFile()" [hidden]="subID==-1">
+      <div class="form-group">
+          <label for="file">Select File:</label>
+          <input type="file" id="file" name="file" class="form-control" (change)="onFileSelected($event)" accept=".pdf" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Update File</button>
+  </form>
+</div>

@@ -1,0 +1,55 @@
+<!-- Modal -->
+<div class="popup-overlay" *ngIf="showModal">
+  <div class="popup-container">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Send Message</h5>
+          <button type="button" class="close" (click)="closeModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="contact" [formGroup]="messageForm" (ngSubmit)="sendMessage()">
+            <div class="row">
+              <div class="col-lg-12">
+                <fieldset>
+                  <label for="msgTitle">Subject:</label>
+                  <input type="text" id="msgTitle" formControlName="msgTitle" required />
+                  <div *ngIf="messageForm.get('msgTitle')!.errors && messageForm.get('msgTitle')!.touched"
+                    class="error">
+                    Subject is required
+                  </div>
+                </fieldset>
+              </div>
+              <div class="col-lg-12">
+                <fieldset>
+                  <label for="msgType">Message Type:</label>
+                  <input type="text" id="msgType" formControlName="msgType" required />
+                  <div *ngIf="messageForm.get('msgType')!.errors && messageForm.get('msgType')!.touched" class="error">
+                    Message Type is required
+                  </div>
+                </fieldset>
+              </div>
+              <div class="col-lg-12">
+                <fieldset>
+                  <label for="msgBody">Body:</label>
+                  <textarea id="msgBody" formControlName="msgBody" required></textarea>
+                  <div *ngIf="messageForm.get('msgBody')!.errors && messageForm.get('msgBody')!.touched" class="error">
+                    Body is required
+                  </div>
+                </fieldset>
+              </div>
+              <div class="col-lg-12">
+                <fieldset>
+                  <button type="submit" id="form-submit" class="button">SEND MESSAGE NOW</button>
+                  <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+                </fieldset>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

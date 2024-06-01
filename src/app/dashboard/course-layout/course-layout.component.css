@@ -1,0 +1,256 @@
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600);
+
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #888;
+}
+
+/* Style for the popup overlay */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  overflow: hidden;
+  width: 250px; 
+  background-color: #1F262C;
+}
+
+/* Sidebar navigation */
+.sidebar-nav {
+  position: fixed;
+  background-color: #38404B;
+  height: 100%;
+  width: 250px; 
+  font-weight: 400;
+  font-size: 1.2em;
+  overflow: auto;
+  padding-bottom: 6em;
+  z-index: 9;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.sidebar-nav ul {
+  list-style: none;
+  display: block;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-nav ul li {
+  margin-left: 0;
+  padding-left: 0;
+  display: inline-block;
+  width: 100%;
+}
+
+.sidebar-nav ul li a {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.75em;
+  padding: 1.05em 1em;
+  position: relative;
+  display: block;
+}
+
+.sidebar-nav ul li a:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+
+
+
+
+.sidebar-nav ul li i {
+  font-size: 1.8em;
+  padding-right: 0.5em;
+  width: 9em;
+  display: inline;
+  vertical-align: middle;
+}
+
+.sidebar-nav > ul > li > a:after {
+  content: ">";
+  font-family: ionicons;
+  font-size: 15px;
+  width: 10px;
+  color: #fff;
+  position: absolute;
+  right: 0.75em;
+  top: 45%;
+}
+
+.sidebar-nav .nav-flyout {
+  position: absolute;
+  background-color: #080d11;
+  z-index: 9;
+  left: 2.5em;
+  top: 0;
+  height: 100vh;
+  width: 250px;  
+  -webkit-transform: translateX(100%);
+  -moz-transform: translateX(100%);
+  -ms-transform: translateX(100%);
+  -o-transform: translateX(100%);
+  transform: translateX(100%);
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.sidebar-nav .nav-flyout a:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.sidebar-nav ul > li:hover .nav-flyout {
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -o-transform: translateX(0);
+  transform: translateX(0);
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+/* Popup containers wrapper */
+.popup-container-wrapper {
+ position: fixed;
+  top: 150;
+  right: 40%;
+  width: 600px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+
+/* View Track Details Popup */
+.popup-container.wider {
+  max-width: 600px;
+  width: 80%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+
+.popup-container form .form-group .viewLabel-and-data {
+  display: flex;
+  align-items: center;
+}
+
+.popup-container form .form-group label {
+  font-weight: bold;
+}
+
+.viewLabel-and-data label {
+  font-weight: bold;
+  display: inline-block;
+  width: 200px; /* Adjust the width as needed */
+}
+
+.viewLabel-and-data p {
+  display: inline-block;
+  margin-left: 10px; /* Adjust the spacing between label and paragraph */
+}
+
+/* Style for the popup container */
+.popup-container {
+  position: relative;
+  width: 600px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  z-index: 1001;
+  overflow-y: auto;
+}
+
+/* Optional: Close button style */
+.popup-close {
+  background-color: rgb(146, 14, 14);
+  color: white;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+/* Other styles for buttons and forms */
+.form-horizontal button {
+  background-color: rgb(146, 14, 14);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  display: inline-block;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
+.form-horizontal button:hover {
+  background-color: rgb(114, 3, 3);
+}
+
+.popup-container form .btn.signin,
+.popup-container form .popup-close {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.popup-container form .popup-close {
+  background-color: rgb(146, 14, 14);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+}
+
+
+
+.button-group {
+  text-align: left;
+}
+
+.button-group button {
+  margin: 0 5px;
+}
+
+body {
+  font-size: 100%;
+  overflow-y: scroll;
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  background-color: #fefefe;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  -webkit-transition: all 0.6s ease;
+  -moz-transition: all 0.6s ease;
+  transition: all 0.6s ease;
+}

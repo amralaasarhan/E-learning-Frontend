@@ -1,0 +1,49 @@
+<form class="row domain-search bg-pblue" (submit)="searchCourses()">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-3">
+              <h2 class="form-title">Find Your <strong>Dream Course</strong></h2>
+              <p>Search for your dream course now</p>
+          </div>
+          <div class="col-md-9">
+              <div class="input-group">
+                  <input type="search" class="form-control" [(ngModel)]="searchQuery" name="searchQuery" placeholder="Enter course name" />
+                  <span class="input-group-addon">
+                      <button type="submit" class="btn btn-primary">Search</button>
+                  </span>
+              </div>
+          </div>
+      </div>
+  </div>
+</form>
+
+<!-- Display search results -->
+<section class="dark">
+  <div class="container py-4">
+      <h1 class="h1 text-center" id="pageHeaderTitle">Search Results</h1>
+
+      <div class="courses-container">
+          <article class="postcard dark blue" *ngFor="let course of courses">
+              <a class="postcard__img_link" href="#">
+                  <!-- Adjust the src attribute based on your image path or use course.imageURL if available -->
+                  <img class="postcard__img" [src]="course.courseImage ? course.courseImage : '../../assets/images/course-04.jpg'" alt="{{ course.courseName }}" />
+              </a>
+              <div class="postcard__text">
+                  <h1 class="postcard__title blue">
+                      <a href="#">{{ course.courseName }}</a>
+                  </h1>
+
+                  <div class="postcard__bar"></div>
+                  <ul class="postcard__tagbox">
+                      <li class="tag__item">
+                          <i class="fas fa-clock mr-2"></i>{{ course.courseHours }} hours
+                      </li>
+                      <li class="tag__item">
+                        <i class="fas fa-clock mr-2"></i>Level {{ course.courseLevel }} 
+                    </li>
+                  </ul>
+              </div>
+          </article>
+      </div>
+  </div>
+</section>

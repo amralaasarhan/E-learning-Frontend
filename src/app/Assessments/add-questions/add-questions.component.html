@@ -1,0 +1,85 @@
+<header class="header-area header-sticky">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <nav class="main-nav">
+          <!-- ***** Logo Start ***** -->
+          <a href="index.html" class="logo">
+            Career Mentorship
+          </a>
+          <ul class="nav">
+            <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+            <li class="scroll-to-section"><a href="">My Messages</a></li>
+            <li class="has-sub">
+              <a href="javascript:void(0)"> made by me </a>
+              <ul class="sub-menu">
+                <li class="scroll-to-section"><a href="./supervisorTracks"> Tracks </a> </li>
+                <li class="scroll-to-section"><a href="/course"> Courses</a></li>
+              </ul>
+            </li>
+            <li class="has-sub">
+              <a href="javascript:void(0)">My Account</a>
+              <ul class="sub-menu">
+                <li class="scroll-to-section"><a href="/updateProfile"> Update Account </a> </li>
+                <li class="scroll-to-section"><a href="/delete-user"> Delete Account</a></li>
+                <li class="scroll-to-section"><a href="./logout">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+          <a class='menu-trigger'>
+            <span>Menu</span>
+          </a>
+          <!-- ***** Menu End ***** -->
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+   <form [formGroup]="questionForm" (ngSubmit)="onSubmit()">
+    <div formArrayName="questions" *ngFor="let question of questions.controls; let i = index">
+       <div [formGroupName]="i">
+         <div>
+           <label for="question{{i}}">Question {{i + 1}}:</label>
+           <input type="text" formControlName="question" id="question{{i}}" required>
+         </div>
+         <div>
+           <label for="questionType{{i}}">Question Type:</label>
+           <select formControlName="questionType" id="questionType{{i}}" required>
+             <option *ngFor="let type of questionTypes" [value]="type">{{type}}</option>
+           </select>
+         </div>
+         <div>
+           <label for="questionLevel{{i}}">Question Level:</label>
+           <select formControlName="questionLevel" id="questionLevel{{i}}" required>
+             <option *ngFor="let level of questionLevels" [value]="level">{{level}}</option>
+           </select>
+         </div>
+         <div>
+          <button type="button" (click)="submitQuestion(i)">Submit Question</button>
+         </div>
+         <div>
+          <label for="correctAnswer{{i}}">Correct Answer:</label>
+          <input type="text" formControlName="correctAnswer" id="correctAnswer{{i}}" required>
+        </div>
+         <div *ngIf="question.get('questionType')?.value === 'mcq' || question.get('questionType')?.value === 'true or false'">
+            <div *ngFor="let answer of getAnswersArray(i).controls; let j = index">
+              <label for="answer{{i}}{{j}}">Answer {{j + 1}}:</label>
+              <input type="text" [formControlName]="j" id="answer{{i}}{{j}}" required>
+
+              <button type="button" (click)="submitAnswer(i)">Submit Answer</button>
+            </div>
+            <!-- Moved the "Add Another Answer" button outside the *ngFor loop for answers -->
+            <button type="button" (click)="addAnswer(i)">Add Another Answer</button>
+         </div>
+         <div *ngIf="question.get('questionType')?.value === 'essay'">
+           <label for="essayAnswer{{i}}">Answer:</label>
+           <textarea formControlName="essayAnswer" id="essayAnswer{{i}}" required></textarea>
+         </div>
+         <!-- Button to submit the current question -->
+        
+       </div>
+    </div>
+    <button type="button" (click)="addQuestion()">Add Another Question</button>
+    <button type="submit">Submit</button>
+</form>

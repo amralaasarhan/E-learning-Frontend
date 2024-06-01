@@ -1,0 +1,16 @@
+<div class="total-progress">
+    <h2>Course Progression</h2>
+  </div>
+<div *ngIf="progressData">
+  <h2 style="color: white;">Student Progress In Course ILOS </h2>
+  <div *ngFor="let ilo of progressData.iloResults | keyvalue">
+    <div class="ilo-item">
+      <h3>ILO Description: {{ ilo.value.name }}</h3>
+      <p>Percentage: {{ ilo.value.percentage }}%</p>
+    </div>
+  </div>
+  <hr />
+  <div class="total-progress">
+    <h2>Total Course Progress: {{ progressData.totalProgress }}%</h2>
+  </div>
+</div>

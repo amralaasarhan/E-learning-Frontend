@@ -1,0 +1,67 @@
+<body>
+<header class="header-area header-sticky">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <nav class="main-nav">
+          <!-- ***** Logo Start ***** -->
+          <a href="index.html" class="logo">
+            Career Mentorship
+          </a>
+          <ul class="nav">
+            <li class="scroll-to-section"><a href='/student-dashboard' class="active">Home</a></li>
+            <li class="scroll-to-section"><a href="./messages">My Messages</a></li>
+            <li class="has-sub">
+              <a href="javascript:void(0)"> Enrolled In </a>
+              <ul class="sub-menu">
+                <li class="scroll-to-section"><a href="./RegisteredTracks"> Tracks </a> </li>
+                <li class="scroll-to-section"><a href="./RegisteredCourses"> Courses</a></li>
+              </ul>
+            </li>
+            <li class="has-sub">
+              <a href="javascript:void(0)">My Account</a>
+              <ul class="sub-menu">
+                <li class="scroll-to-section"><a href="/updateProfile"> Update Account </a> </li>
+                <li class="scroll-to-section"><a href="/delete-user"> Delete Account</a></li>
+                <li class="scroll-to-section"><a href="./forgot-password"> Reset Password</a></li>
+                <li class="scroll-to-section"><a href="./logout">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+          <a class='menu-trigger'>
+            <span>Menu</span>
+          </a>
+          <!-- ***** Menu End ***** -->
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<br><br><br><br>
+
+
+<div class="ag-format-container">
+  <h1 class="ag-title">My Courses</h1>
+  <div class="ag-courses_box">
+    <div class="ag-courses_item" *ngFor="let course of courses">
+      <a [routerLink]="['/course-view', course.courseId]" class="ag-courses-item_link">
+
+        <div class="ag-courses-item_bg">
+        </div>
+
+        <div class="ag-courses-item_title">
+          <h2 class="card-title">{{ course.courseName }}</h2>
+        </div>
+
+        <div class="ag-courses-item_date-box">
+          Hours:
+          <span class="ag-courses-item_date">{{ course.courseHours }}</span>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Level:
+          <span class="ag-courses-item_date">{{ course.courseLevel }}</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+</body>

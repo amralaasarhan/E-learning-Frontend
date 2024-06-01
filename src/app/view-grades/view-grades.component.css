@@ -1,0 +1,40 @@
+.container {
+    margin: 20px;
+  }
+  
+  h1 {
+    color: #8b0000; /* Dark red text color */
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  thead {
+    background-color: #8b0000; /* Dark red background */
+    color: #030303; /* White text color */
+  }
+  
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd; /* Light gray border */
+  }
+ 
+  tr {
+    background-color: #f2f2f2; /* Light gray background for even rows */
+  }
+
+ 
+  
+  a {
+    color: #0000ff; /* Blue link color */
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline; /* Underline on hover */
+  }

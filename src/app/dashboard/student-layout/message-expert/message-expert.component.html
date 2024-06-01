@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 card-margin" *ngFor="let expert of expertsData">
+      <div class="card">
+        <div class="card-header no-border">
+          <h5 class="card-title">{{ expert.name }}</h5>
+          <p class="card-subtitle">{{ expert.specialization }}</p>
+        </div>
+        <div class="card-body">
+          <div class="main-button-red">
+            <button class="btn btn-primary" (click)="openModal(expert.name)">Send Message</button>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="popup-overlay" *ngIf="showModal">
+  <div class="popup-container">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <h5 class="modal-title">Send Message</h5>
+            <button type="button" class="popup-close" (click)="closeModal()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+
+        <div class="modal-body">
+          <!-- Your form here -->
+          <form id="contact" [formGroup]="messageForm" (ngSubmit)="sendMessage()">
+            <div class="row">
+              <div class="col-lg-12">
+                <fieldset>
+                  <label for="msgTitle">Subject:</label>
+                  <input type="text" id="msgTitle" formControlName="msgTitle" required />
+                  <div *ngIf="messageForm.get('msgTitle')!.errors && messageForm.get('msgTitle')!.touched"
+                    class="error">
+                    Subject is required
+                  </div>
+                </fieldset>
+              </div>
+
+              <div class="col-lg-12">
+                <fieldset>
+                  <label for="messageType">Message Type:</label>
+                  <input type="text" id="messageType" formControlName="msgType" required />
+                  <div *ngIf="messageForm.get('msgType')!.errors && messageForm.get('msgType')!.touched" class="error">
+                    Message Type is required
+                  </div>
+                </fieldset>
+              </div>
+
+              <div class="col-lg-12">
+                <fieldset>
+                  <label for="body">Body:</label>
+                  <textarea id="body" formControlName="msgBody" required></textarea>
+                  <div *ngIf="messageForm.get('msgBody')!.errors && messageForm.get('msgBody')!.touched" class="error">
+                    Body is required
+                  </div>
+                </fieldset>
+              </div>
+
+              <div class="col-lg-12">
+                <fieldset>
+                  <button type="submit" id="form-submit" class="button">SEND MESSAGE NOW</button>
+                  <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+                </fieldset>
+              </div>
+            </div>
+          </form>
+          <!-- End of form -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

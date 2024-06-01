@@ -1,0 +1,28 @@
+<header></header>
+
+<section class="dark">
+  <div class="container py-4">
+    <h1 class="h1 text-center" id="pageHeaderTitle">Courses</h1>
+
+    <div class="courses-container">
+      <article class="postcard dark blue" *ngFor="let course of courses">
+        <a class="postcard__img_link" href="#">
+          <img class="postcard__img"[src]="course.courseImage" alt="{{ course.courseName }}" />
+        </a>
+        <div class="postcard__text">
+          <h1 class="postcard__title blue"><a href="#">{{ course.courseName }}</a></h1>
+          
+          <div class="postcard__bar"></div>
+          <ul class="postcard__tagbox">
+            <li class="tag__item"><i class="fas fa-clock mr-2"></i>{{ course.courseHours }} hours</li>
+            <li class="tag__item"><i class="fas fa-clock mr-2">Level&nbsp;&nbsp; </i>{{ course.courseLevel }}</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+
+<footer></footer>

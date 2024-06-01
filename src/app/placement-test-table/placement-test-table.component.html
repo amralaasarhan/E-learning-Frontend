@@ -1,0 +1,23 @@
+<table class="placement-test-table">
+    <thead>
+      <tr>
+        <th>Course Name</th>
+        <th>Assessment Name</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let test of placementTests">
+        <td>{{ test.Course_Name }}</td>
+        <td>{{ test.Assessment_Name }}</td>
+        <td>{{ test.Placement_Test_Status }}</td>
+        <td>
+          <button class="submit-button" *ngIf="isPending(test.Placement_Test_Status)" (click)="onSubmit(test.Placement_Test_ID)">
+            Submit
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  

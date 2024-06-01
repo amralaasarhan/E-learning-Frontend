@@ -1,0 +1,47 @@
+<header class="header-area header-sticky">
+   <div class="container">
+     <div class="row">
+       <div class="col-12">
+         <nav class="main-nav">
+           <!-- ***** Logo Start ***** -->
+           <a href="index.html" class="logo">
+             Career Mentorship
+           </a>
+           <ul class="nav">
+             <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+             <li class="scroll-to-section"><a href="">My Messages</a></li>
+             <li class="has-sub">
+               <a href="javascript:void(0)"> made by me </a>
+               <ul class="sub-menu">
+                 <li class="scroll-to-section"><a href="./supervisorTracks"> Tracks </a> </li>
+                 <li class="scroll-to-section"><a href="/course"> Courses</a></li>
+               </ul>
+             </li>
+             <li class="has-sub">
+               <a href="javascript:void(0)">My Account</a>
+               <ul class="sub-menu">
+                 <li class="scroll-to-section"><a href="/updateProfile"> Update Account </a> </li>
+                 <li class="scroll-to-section"><a href="/delete-user"> Delete Account</a></li>
+                 <li class="scroll-to-section"><a href="./logout">Logout</a></li>
+               </ul>
+             </li>
+           </ul>
+           <a class='menu-trigger'>
+             <span>Menu</span>
+           </a>
+           <!-- ***** Menu End ***** -->
+         </nav>
+       </div>
+     </div>
+   </div>
+ </header>
+
+
+
+<div class="questions-container">
+    <div *ngFor="let question of questions" class="question-item">
+       <h3>{{ question.QUESTION }}</h3>
+       <p class="question-type">The {{ question.QUESTION_TYPE }}</p>
+       <p class="question-level">{{ question.QUESTION_LEVEL }}</p>
+    </div>
+   </div>

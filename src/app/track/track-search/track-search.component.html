@@ -1,0 +1,63 @@
+<!-- Search form -->
+<form class="row domain-search bg-pblue" (submit)="searchTrack()">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <h2 class="form-title">Find Your <strong>Dream Track</strong></h2>
+        <p>Search for your dream track now</p>
+      </div>
+      <div class="col-md-9">
+        <div class="input-group">
+          <input
+            type="search"
+            class="form-control"
+            [(ngModel)]="searchQuery"
+            name="searchQuery"
+            placeholder="Enter Track name"
+          />
+          <span class="input-group-addon"
+            ><button type="submit" class="btn btn-primary">Search</button></span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<!-- Display search results -->
+<section class="dark">
+  <div class="container py-4">
+    <h1 class="h1 text-center" id="pageHeaderTitle">Search Results</h1>
+
+    <div class="courses-container">
+      <article class="postcard dark blue" *ngFor="let track of tracks ">
+        <a class="postcard__img_link" href="#">
+          <!-- Adjust the src attribute based on your image path or use course.imageURL if available -->
+          <img
+            class="postcard__img"
+            [src]="track.trackImage ? track.trackImage : '../../assets/images/course-04.jpg'"
+            alt="{{ track.title }}"
+          />
+        </a>
+        <div class="postcard__text">
+          <h1 class="postcard__title blue">
+            <a href="#">{{ track.title }}</a>
+          </h1>
+
+          <div class="postcard__bar"></div>
+          <div class="postcard__preview-txt">
+            {{ track.description }}
+          </div>
+          <ul class="postcard__tagbox">
+            <li class="tag__item">
+              <i class="fas fa-clock mr-2"></i>
+            </li>
+            <li class="tag__item">
+              <i class="fas fa-clock mr-2"></i>
+            </li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>

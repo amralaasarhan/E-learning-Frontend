@@ -1,0 +1,29 @@
+.ilo-item {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #f9f9f9;
+  }
+  
+  .ilo-item h3 {
+    margin: 0;
+    font-size: 1.2em;
+    color: #333;
+  }
+  
+  .ilo-item p {
+    margin: 5px 0 0;
+    color: #555;
+  }
+  
+  .total-progress {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .total-progress h2 {
+    font-size: 1.5em;
+    color: #007bff;
+  }
+  

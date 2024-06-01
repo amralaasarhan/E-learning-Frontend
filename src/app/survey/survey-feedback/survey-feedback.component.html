@@ -1,0 +1,33 @@
+<div class="survey-container">
+  <h1>Create Survey</h1>
+
+  <div *ngFor="let question of survey.questions" class="question-group">
+      <h4 class="question-label">{{ question.question }}</h4>
+
+      <ng-container *ngIf="question.q_type === 'rate'">
+      <div class="rate-container">
+          <label *ngFor="let i of [0, 1, 2, 3, 4, 5]" class="rate-label">
+          <input
+              type="radio"
+              name="rate-{{ question.questionID }}"
+              [(ngModel)]="answers[question.questionID]"
+              [value]="i"
+          />
+          {{ i }}
+          </label>
+      </div>
+      </ng-container>
+
+      <ng-container *ngIf="question.q_type !== 'rate'">
+      <input
+          type="text"
+              [(ngModel)]="answers[question.questionID]"
+          placeholder="Enter your answer"
+          class="question-input"
+      />
+      </ng-container>
+  </div>
+
+  <button (click)="submitAnswers()" class="submit-btn">Submit</button>
+  <!-- // <button (click)="navigateToSentimentAnalysis()">View Sentiment Analysis</button> -->
+  </div>

@@ -1,0 +1,117 @@
+<body>
+  <header class="header-area header-sticky">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="main-nav">
+            <a href="index.html" class="logo">
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Career Mentorship
+            </a>
+            <ul class="nav">
+              <li class="scroll-to-section"><a href="/supervisor-dashboard" class="active">Home</a></li>
+              <li class="scroll-to-section"><a href="./messages">My Messages</a></li>
+              <li class="has-sub">
+                <a href="javascript:void(0)"> made by me </a>
+                <ul class="sub-menu">
+                  <li class="scroll-to-section"><a href="./supervisorTracks"> Tracks </a> </li>
+                  <li class="scroll-to-section"><a href="./supervisorCourses"> Courses</a></li>
+                </ul>
+              </li>
+              <li class="has-sub">
+                <a href="javascript:void(0)">My Account</a>
+                <ul class="sub-menu">
+                  <li class="scroll-to-section"><a href="/updateProfile"> Update Account </a> </li>
+                  <li class="scroll-to-section"><a href="/delete-user"> Delete Account</a></li>
+                  <li class="scroll-to-section"><a href="./forgot-password"> Reset Password</a></li>
+                  <li class="scroll-to-section"><a href="./logout">Logout</a></li>
+                </ul>
+              </li>
+            </ul>
+            <a class='menu-trigger'>
+              <span>Menu</span>
+            </a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <nav class="sidenav">
+    <br><br><br><br>
+    <ul class="main-buttons">
+      <li>
+        <i class="fa fa-circle fa-2x"></i>
+        What Can I do
+        <ul class="hidden">
+          <br><br><br><br>
+          <li (click)="openAddTrackPopup()">Add Track</li>
+          <li (click)="navigateToMyTracks()">My Tracks</li>
+          <li (click)="navigateToMyCourses()">My Courses</li>
+          
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  <br><br><br><br><br><br><br>
+  <div class='course-topics'>
+    <div class="trackTitle">
+      <h2>Welcome {{ user }}</h2>
+    </div>
+    <br>
+
+    <div class="announcement">
+      <h2>Announcements</h2>
+      <p>Check out the latest topics below.</p>
+    </div>
+
+    <div class="popups">
+      <!--Add Course Popup  -->
+      <div class="login-box" *ngIf="showAddTrackPopup">
+        <h2>Add Track</h2>
+        <form>
+          <div class="user-box">
+            <label for="title">Track Title</label>
+            <br>
+            <input type="text" [(ngModel)]="title" name="title" placeholder="Enter track title"  [ngModelOptions]="{standalone:true}"> 
+          </div>
+          <div class="user-box">
+            <label for="description">Track Description</label>
+            <br>
+            <textarea [(ngModel)]="description" name="description" placeholder="Enter track description"  [ngModelOptions]="{standalone:true}"></textarea>
+          </div>
+          <div class="user-box">
+
+            <label for="trackImage">Select Track Image:</label>
+            <br><br>
+            <!-- Custom file input button -->
+            <label for="trackImage" class="custom-file-input">Choose File</label>
+            <div class="selected-file" *ngIf="fileName">Selected File: {{ fileName }}</div>
+
+            <input type="file" name="trackImage" id="trackImage" accept="image/*" (change)="onFileSelected($event)"
+              required>
+          </div>
+
+          <a (click)="addTrack()">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Add Track
+          </a>
+          <a (click)="closeAddTrackPopup()">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Close
+          </a>
+        </form>
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+
+</body>

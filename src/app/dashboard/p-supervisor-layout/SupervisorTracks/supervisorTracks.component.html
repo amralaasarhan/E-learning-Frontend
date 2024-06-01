@@ -1,0 +1,62 @@
+<body>
+  <header class="header-area header-sticky">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="main-nav">
+            <!-- ***** Logo Start ***** -->
+            <a href="index.html" class="logo">
+              Career Mentorship
+            </a>
+            <ul class="nav">
+              <li class="scroll-to-section"><a href="/supervisor-dashboard" class="active">Home</a></li>
+              <li class="scroll-to-section"><a href="./messages">My Messages</a></li>
+              <li class="has-sub">
+                <a href="javascript:void(0)"> made by me </a>
+                <ul class="sub-menu">
+                  <li class="scroll-to-section"><a href="./supervisorTracks"> Tracks </a> </li>
+                  <li class="scroll-to-section"><a href="/course"> Courses</a></li>
+                </ul>
+              </li>
+              <li class="has-sub">
+                <a href="javascript:void(0)">My Account</a>
+                <ul class="sub-menu">
+                  <li class="scroll-to-section"><a href="/delete-user"> Update Account </a> </li>
+                  <li class="scroll-to-section"><a href="/delete-user"> Delete Account</a></li>
+                  <li class="scroll-to-section"><a href="">Logout</a></li>
+                </ul>
+              </li>
+            </ul>
+            <a class='menu-trigger'>
+              <span>Menu</span>
+            </a>
+            <!-- ***** Menu End ***** -->
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <br><br><br><br><br>
+
+  <div class="ag-format-container">
+    <h1 class="ag-title">My Tracks</h1>
+    <div class="ag-courses_box">
+      <div class="ag-courses_item" *ngFor="let track of tracks">
+        <a [routerLink]="['/track-view', track.trackId]" class="ag-courses-item_link">
+
+          <div class="ag-courses-item_bg">
+          </div>
+
+          <div class="ag-courses-item_title">
+            <h2 class="card-title">{{ track.title }}</h2>
+          </div>
+          <div class="ag-courses-item_date-box">
+            Description:
+            <span class="ag-courses-item_date">{{ track.description }}</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</body>

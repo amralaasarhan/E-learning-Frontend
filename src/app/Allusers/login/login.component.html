@@ -1,0 +1,39 @@
+<body>
+    <div class="wrapper">
+        <form>
+            <h2>Login</h2>
+            <div class="input-field">
+                <label>Email</label>
+                <br>
+                <input type="text" [(ngModel)]="email" [ngModelOptions]="{standalone:true}" required>
+
+            </div>
+            <div class="input-field">
+                <label>Password</label>
+                <br>
+                <input type="password" [(ngModel)]="pass" [ngModelOptions]="{standalone:true}" required>
+            </div>
+            <div class="input-field">
+                <label>User Type</label>
+                <br>
+                <select [(ngModel)]="userType" [ngModelOptions]="{standalone:true}">
+                    <option value="" disabled selected hidden>User Type</option>
+                    <option value="student">Student</option>
+                    <option value="expert">Expert</option>
+                    <option value="path_supervisor">Path Supervisor</option>
+                    <option value="instructor">Instructor</option>
+                    <option value="company_representative">Company Representative</option>
+                    <option value="admin">Admin</option>
+                </select>
+
+            </div>
+            <div class="forget">
+                <a href="/forgot-password">Forgot password?</a>
+            </div>
+            <button type="submit" (click)="login()">Log In</button>
+            <div class="register">
+                <p>Don't have an account? <a href="/signup">Register</a></p>
+            </div>
+        </form>
+    </div>
+</body>

@@ -1,0 +1,49 @@
+/* Adjust image size for tracks */
+.card-img-top {
+  height: 5.19cm;
+  width: 10.95cm;
+}
+/* Adjust image size for tracks */
+.card-img-top, .course-img-top {
+  height: 5.19cm;
+  width: 100%; /* Set the width to 100% to match the card container */
+}
+
+/* Custom button styles */
+.custom-button {
+  font-size: 13px;
+  color: #fff;
+  background-color: #a12c2f;
+  padding: 12px 30px;
+  display: inline-block;
+  border: none;
+  border-radius: 22px;
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.custom-button:hover {
+  background-color: #872227;
+}
+
+/* Heading styles */
+h2 {
+  color: #fff;
+}
+
+/* Main button styles */
+.main-button-red a {
+  background-color: rgb(146, 14, 14);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px; /* Adjust the value to change the roundness of the buttons */
+  display: inline-block;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
+.main-button-red a:hover {
+  background-color: rgb(114, 3, 3); /* Change the color on hover if needed */
+}

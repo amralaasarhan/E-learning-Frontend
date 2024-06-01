@@ -1,0 +1,21 @@
+<div class="container">
+    <h1>Ungraded Attempts</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Student Name</th>
+          <th>Assessment Name</th>
+          <th>Assessment Type</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let attempt of ungradedAttempts">
+          <td>{{ attempt.FNAME }} {{ attempt.LNAME }}</td>
+          <td>{{ attempt.ASSESSMENT_NAME }}</td>
+          <td>{{ attempt.ASSESSMENT_TYPE }}</td>
+          <td><a [routerLink]="['/grade-attempt', attempt.ID]">Grade Attempt</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

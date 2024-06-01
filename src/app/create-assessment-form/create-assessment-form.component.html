@@ -1,0 +1,138 @@
+
+<form #assessmentForm="ngForm" (ngSubmit)="submitForm(assessmentForm)">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" ngModel required>
+    </div>
+    <div>
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" ngModel required></textarea>
+    </div>
+    <div>
+        <label for="assessmentGrade">Total Assessment Grade:</label>
+        <input type="number" id="assessmentGrade" name="assessmentGrade" [(ngModel)]="assessmentGrade" required>
+      </div>
+    <div>
+        <label for="deadline">Deadline:</label>
+        <input type="datetime-local" id="deadline" name="deadline" ngModel required>
+    </div>
+    <div>
+        <label>Course ILOs:</label><br>
+        <div *ngFor="let ilo of courseILOs">
+            <input type="checkbox" [value]="ilo.courseIloId" (change)="onCheckboxChange($event, ilo.courseIloId)">
+            <label>{{ ilo.courseIloDescription }}</label><br>
+        </div>
+        <div *ngIf="!selectedILOIds.length" style="color: red;">At least one course ILO is required.</div>
+    </div>
+    <div>
+        <label for="type">Type:</label>
+        <select id="type" name="type" [(ngModel)]="type" (ngModelChange)="onTypeChange($event)" required>
+            <option value="Assignment/Online">Assignment/Online</option>
+            <option value="Assignment/Submission">Assignment/Submission</option>
+            <option value="Project">Project</option>
+            <option value="Quiz">Quiz</option>
+            <option value="Placement Test">Placement Test</option>
+            <option value="Final">Final</option>
+            <option value="Teaching Assessment">Teaching Assessment</option>
+        </select>
+    </div>
+      
+    <div *ngIf="'Assignment/Submission' === type || 'Project' === type">
+        <!--<div *ngFor="let ilo of courseILOs | filterBySelectedILOs:selectedILOIds; let i = index">
+            <label for="iloWeight{{ilo.courseIloId}}">Weight for {{ ilo.courseIloDescription }}:</label>
+            <input type="number" id="iloWeight{{ilo.courseIloId}}" name="iloWeight{{ilo.courseIloId}}" [(ngModel)]="submissionILOWeights[i].WEIGHT">
+          </div> -->
+        <label for="file">Upload File:</label>
+        <input type="file" id="file" name="file" (change)="onFileSelected($event)">
+    </div>
+    <div *ngIf="'Assignment/Online' === type ||'Quiz' === type || 'Placement Test' === type || 'Final' === type || 'Teaching Assessment' === type ">
+        <!-- Existing form fields -->
+        <div>
+            <label for="mcqWeight">MCQ Questions Weight:</label>
+            <input type="number" id="mcqWeight" name="mcqWeight" [(ngModel)]="mcqWeight" required>
+          </div>
+          <div>
+            <label for="trueFalseWeight">True or False Questions Weight:</label>
+            <input type="number" id="trueFalseWeight" name="trueFalseWeight" [(ngModel)]="trueFalseWeight" required>
+          </div>
+          <div>
+            <label for="essayWeight">Essay Questions Weight:</label>
+            <input type="number" id="essayWeight" name="essayWeight" [(ngModel)]="essayWeight" required>
+          </div>
+          
+         
+          
+          
+        <div *ngFor="let question of questions; let i = index" class="question-container">
+            <div>
+                <label for="questionText{{i}}">Question Text:</label>
+                <textarea id="questionText{{i}}" name="questionText{{i}}" [ngModel]="questions[i]?.QUESTION_TEXT" (ngModelChange)="questions[i].QUESTION_TEXT = $event" required></textarea>
+            </div>
+            <div>
+                <label for="questionLevel{{i}}">Question Level:</label>
+                <select id="questionLevel{{i}}" name="questionLevel{{i}}" [ngModel]="questions[i]?.QUESTION_LEVEL" (ngModelChange)="questions[i].QUESTION_LEVEL = $event" required>
+                    <option value="EASY">Easy</option>
+                    <option value="MEDIUM">Medium</option>
+                    <option value="HARD">Hard</option>
+                </select>
+            </div>
+            <div>
+                <label for="courseILOId{{i}}">Course ILO:</label>
+                <select id="courseILOId{{i}}" name="courseILOId{{i}}" [ngModel]="questions[i]?.COURSE_ILO_ID" (ngModelChange)="questions[i].COURSE_ILO_ID = $event" required>
+                    <option *ngFor="let ilo of courseILOs | filterBySelectedILOs:selectedILOIds" [value]="ilo.courseIloId">{{ ilo.courseIloDescription }}</option>
+                </select>
+            </div>
+            <div>
+                <label for="questionType{{i}}">Question Type:</label>
+                <select id="questionType{{i}}" name="questionType{{i}}" [ngModel]="questions[i]?.QUESTION_TYPE" (ngModelChange)="questions[i].QUESTION_TYPE = $event" required>
+                    <option value="MCQ">MCQ</option>
+                    <option value="TrueFalse">True or False</option>
+                    <option value="Essay">Essay</option>
+                </select>
+            </div>
+            
+            <div *ngIf="question.QUESTION_TYPE === 'MCQ'">
+                <div>
+                    <label for="answer1{{i}}">Answer 1:</label>
+                    <input type="text" id="answer1{{i}}" name="answer1{{i}}" [ngModel]="questions[i]?.ANSWER_1" (ngModelChange)="questions[i].ANSWER_1 = $event" required>
+                    <input type="radio" name="correctAnswer{{i}}" [value]="questions[i]?.ANSWER_1" [checked]="questions[i]?.CORRECT_ANSWER === questions[i]?.ANSWER_1" (change)="questions[i].CORRECT_ANSWER = questions[i]?.ANSWER_1">
+                </div>
+                <div>
+                    <label for="answer2{{i}}">Answer 2:</label>
+                    <input type="text" id="answer2{{i}}" name="answer2{{i}}" [ngModel]="questions[i]?.ANSWER_2" (ngModelChange)="questions[i].ANSWER_2 = $event" required>
+                    <input type="radio" name="correctAnswer{{i}}" [value]="questions[i]?.ANSWER_2" [checked]="questions[i]?.CORRECT_ANSWER === questions[i]?.ANSWER_2" (change)="questions[i].CORRECT_ANSWER = questions[i]?.ANSWER_2">
+                </div>
+                <div>
+                    <label for="answer3{{i}}">Answer 3:</label>
+                    <input type="text" id="answer3{{i}}" name="answer3{{i}}" [ngModel]="questions[i]?.ANSWER_3" (ngModelChange)="questions[i].ANSWER_3 = $event" required>
+                    <input type="radio" name="correctAnswer{{i}}" [value]="questions[i]?.ANSWER_3" [checked]="questions[i]?.CORRECT_ANSWER === questions[i]?.ANSWER_3" (change)="questions[i].CORRECT_ANSWER = questions[i]?.ANSWER_3">
+                </div>
+                <div>
+                    <label for="answer4{{i}}">Answer 4:</label>
+                    <input type="text" id="answer4{{i}}" name="answer4{{i}}" [ngModel]="questions[i]?.ANSWER_4" (ngModelChange)="questions[i].ANSWER_4 = $event" required>
+                    <input type="radio" name="correctAnswer{{i}}" [value]="questions[i]?.ANSWER_4" [checked]="questions[i]?.CORRECT_ANSWER === questions[i]?.ANSWER_4" (change)="questions[i].CORRECT_ANSWER = questions[i]?.ANSWER_4">
+                </div>
+            </div>
+            
+            <div *ngIf="question.QUESTION_TYPE === 'Essay'">
+                <!-- Include only the question text input for Essay type -->
+            </div>
+            <div *ngIf="question.QUESTION_TYPE === 'TrueFalse'">
+                <div>
+                    <label for="correctAnswer{{i}}">Correct Answer:</label>
+                    <select id="correctAnswer{{i}}" name="correctAnswer{{i}}" [ngModel]="questions[i]?.CORRECT_ANSWER" (ngModelChange)="questions[i].CORRECT_ANSWER = $event" required>
+                        <option value="True">True</option>
+                        <option value="False">False</option>
+                    </select>
+                </div>
+            </div>
+            <button type="button" class="remove-question-btn" (click)="removeQuestion(i)">Remove Question</button>
+
+        </div>
+
+        <!-- Add button to add question -->
+        <button type="button" (click)="addQuestion()">Add Question</button>
+    </div>
+    <!-- Submit button -->
+    <button type="submit" [disabled]="!isFormValid()">Submit</button>
+</form>

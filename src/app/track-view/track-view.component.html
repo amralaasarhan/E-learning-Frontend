@@ -1,0 +1,580 @@
+<body>
+  <header class="header-area header-sticky">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="main-nav">
+            <a href="index.html" class="logo">
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Career Mentorship
+            </a>
+            <ng-container *ngIf="userData.role === 'student'">
+              <ul class="nav">
+                <li class="scroll-to-section"><a href='/student-dashboard' class="active">Home</a></li>
+                <li class="scroll-to-section"><a href="./messages">My Messages</a></li>
+                <li class="has-sub">
+                  <a href="javascript:void(0)"> Enrolled In </a>
+                  <ul class="sub-menu">
+                    <li class="scroll-to-section"><a href="./RegisteredTracks"> Tracks </a> </li>
+                    <li class="scroll-to-section"><a href="./RegisteredCourses"> Courses</a></li>
+                  </ul>
+                </li>
+                <li class="has-sub">
+                  <a href="javascript:void(0)">My Account</a>
+                  <ul class="sub-menu">
+                    <li class="scroll-to-section"><a href="/updateProfile"> Update Account </a> </li>
+                    <li class="scroll-to-section"><a href="/delete-user"> Delete Account</a></li>
+                    <li class="scroll-to-section"><a href="./forgot-password"> Reset Password</a></li>
+                    <li class="scroll-to-section"><a href="./logout">Logout</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </ng-container>
+            <ng-container *ngIf="userData.role === 'supervisor' || userData.role === 'instructor'">
+              <ul class="nav">
+                <li class="scroll-to-section"><a href="/supervisor-dashboard" class="active">Home</a></li>
+                <li class="scroll-to-section"><a href="./messages">My Messages</a></li>
+                <li class="has-sub">
+                  <a href="javascript:void(0)"> made by me </a>
+                  <ul class="sub-menu">
+                    <li class="scroll-to-section"><a href="./supervisorTracks"> Tracks </a> </li>
+                    <li class="scroll-to-section"><a href="./supervisorCourses"> Courses</a></li>
+                  </ul>
+                </li>
+                <li class="has-sub">
+                  <a href="javascript:void(0)">My Account</a>
+                  <ul class="sub-menu">
+                    <li class="scroll-to-section"><a href="/updateProfile"> Update Account </a> </li>
+                    <li class="scroll-to-section"><a href="/delete-user"> Delete Account</a></li>
+                    <li class="scroll-to-section"><a href="./forgot-password"> Reset Password</a></li>
+                    <li class="scroll-to-section"><a href="./logout">Logout</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </ng-container>
+            <a class='menu-trigger'>
+              <span>Menu</span>
+            </a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <ng-container *ngIf="userData.role === 'student'">
+    <nav class="sidenav">
+      <br><br><br><br>
+      <ul class="main-buttons">
+        <li>
+          <i class="fa fa-circle fa-2x"></i>
+          Participaint
+          <ul class="hidden">
+            <br><br><br><br>
+            <li>Contact Supervisor</li>
+          </ul>
+        </li>
+        <li>
+          <i class="fa fa-circle fa-2x"></i>
+          Grades
+          <ul class="hidden">
+            <br><br><br><br><br>
+            <li>-----------</li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </ng-container>
+  <ng-container *ngIf="userData.role === 'supervisor' || userData.role === 'instructor'">
+    <nav class="sidenav">
+      <br><br><br><br>
+      <ul class="main-buttons">
+        <li>
+          <i class="fa fa-circle fa-2x"></i>
+          Track Courses
+          <ul class="hidden">
+            <br><br><br><br>
+            <li (click)="openPopUpAddCourse()"> Add Course </li>
+            <li (click)="openAddCourseWeightPopUp()"> Add Course Weight</li>
+          </ul>
+        </li>
+        <li>
+          <i class="fa fa-circle fa-2x"></i>
+          Track Details
+          <ul class="hidden">
+            <br><br><br><br><br>
+            <li (click)="openViewTrackDetailsPopUp()"> View Track </li>
+            <li (click)="openEditTrackPopup()"> Edit Track </li>
+            <li (click)="openDeleteTrackPopUp()"> Delete Track </li>
+            <li (click)="createSurvey()"> Create Survey </li>
+          </ul>
+        </li>
+        <li>
+          <i class="fa fa-circle fa-2x"></i>
+          TrackILO Details
+          <ul class="hidden">
+            <br><br><br><br><br>
+            <li (click)="openViewTrackILODetailsPopUp()"> View TrackILO </li>
+            <li (click)="openAddTrackILoPopUp()"> Add TrackILO </li>
+            <li (click)="openEditTrackILoPopUp()"> Edit TrackILO </li>
+            <li (click)="openDeleteTrackILOPopUp()"> Delete TrackILO </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </ng-container>
+  <ng-container *ngIf="userData.role === 'supervisor' || userData.role === 'instructor'">
+    <br><br><br><br><br><br><br>
+    <div class='course-topics'>
+      <div class="trackTitle">
+        <h2>{{ track.title }}</h2>
+      </div>
+      <br>
+
+      <div class="announcement">
+        <h2>Announcements</h2>
+        <p>Check out the latest topics below.</p>
+      </div>
+
+      <div class="popups">
+        <!--Add Course Popup  -->
+        <div class="login-box" *ngIf="showAddCoursePopup">
+          <h2>Add Course</h2>
+          <form>
+            <div class="user-box">
+              <label for="courseType">Choose a course:</label>
+              <br>
+              <select name="courseType" id="courseType" [(ngModel)]="selectedCourseType"
+                (change)="onCourseTypeChange()">
+                <option value="existing">Existing Course</option>
+                <option value="new">New Course</option>
+              </select>
+            </div>
+            <br>
+            <div id="existingCourseFields" *ngIf="selectedCourseType === 'existing'">
+              <div class="user-box">
+                <label for="existingCourseId">Select an existing course:</label>
+                <br>
+                <select name="existingCourseId" id="existingCourseId" [(ngModel)]="selectedExistingCourseId"
+                  (ngModelChange)="onCourseSelectionChange()">
+                  <option *ngFor="let course of existingCourses" [value]="course.courseId">{{ course.courseName }}
+                  </option>
+                </select>
+                <div id="selectedCourseInfo">{{ selectedCourseInfo }}</div>
+              </div>
+            </div>
+            <div id="newCourseFields" *ngIf="selectedCourseType === 'new'">
+              <div class="user-box">
+                <label for="courseName">Course Name</label>
+                <br>
+                <input type="text" [(ngModel)]="courseName" name="courseName" class="form-control mb-4"
+                  placeholder="Enter Course Name">
+              </div>
+              <div class="user-box">
+                <label for="courseLevel">Course Level</label>
+                <br>
+                <input type="text" [(ngModel)]="courseLevel" name="courseLevel" class="form-control mb-4"
+                  placeholder="Enter course Level">
+              </div>
+              <div class="user-box">
+                <label for="courseHours">Course Hours</label>
+                <br>
+                <input type="text" [(ngModel)]="courseHours" name="courseHours" class="form-control mb-4"
+                  placeholder="Enter Course Hours">
+              </div>
+              <div class="user-box">
+                <label for="courseImage">Select Course Image:</label>
+                <br><br>
+                <!-- Custom file input button -->
+                <label for="courseImage" class="custom-file-input">Choose File</label>
+                <!-- Display selected file name -->
+                <div class="selected-file" *ngIf="fileCourseName">Selected File: {{ fileCourseName }}</div>
+                <!-- Actual file input element -->
+                <input type="file" name="courseImage" id="courseImage" accept="image/*"
+                  (change)="onFileCourseSelected($event)" required>
+              </div>
+            </div>
+            <a (click)="addCourseToTrack()">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              Add Course
+            </a>
+            <a (click)="closeAddCoursePopup()">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              Close
+            </a>
+          </form>
+        </div>
+
+
+          <!--Add course Weight Popup  -->
+          <div class="login-box" *ngIf="showCourseWeightPopup">
+            <h2>Add Course Weight</h2>
+            <form>
+              <div class="user-box">
+                <label for="selectTrackIlo">Select Track ILO:</label>
+                <br>
+                  <select id="selectTrackIlo" [(ngModel)]="selectedTrackIloIndex" name="selectTrackIlo" (change)="onSelectTrackIlo()">
+                  <option *ngFor="let ilo of trackIlos; let i = index" [value]="i">{{ 'Track ILO ' + (i+1) }}</option>
+                </select>
+              </div>
+              <br>
+              <div class="user-box">
+                <label for="selectCourse">Select Course:</label>
+                <br>
+                <select id="selectCourse" [(ngModel)]="selectedCourseIndex" name="selectCourse" (change)="onCourseSelectionChange()">
+                  <option *ngFor="let course of trackILOCourses; let i = index" [value]="i">{{ course.courseName }}</option>
+              </select>
+              </div>
+              <div *ngIf="selectedTrackIloIndex !== null && trackIlos[selectedTrackIloIndex] && selectedCourseIndex!==null"> 
+  
+                <div class="user-box">
+                  <label for="courseWeight">Enter Weight:</label>
+                  <br><br>
+                  <input type="number" id="courseWeight" [(ngModel)]="courseWeight" name="courseWeight">
+                </div>
+              </div>
+              <a (click)="AddCourseWeight()">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Add course Weight
+              </a>
+              <a (click)="closeAddCourseWeightPopUp()">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Close
+              </a>
+            </form>
+          </div>
+  
+
+        <!--View Track Detials  Popup  -->
+        <div class="login-box" *ngIf="showViewTrackDetailsPopup">
+          <h2>View Track</h2>
+          <form>
+            <div class="user-box">
+              <label for="trackImage">Track Image:</label>
+              <br>
+              <img [src]="track.trackImage" alt="Track Image">
+            </div>
+            <div class="user-box">
+              <label for="trackTitle">Track Title:</label>
+              <br>
+              <p>{{ track.title }}</p>
+            </div>
+            <div class="user-box">
+              <label for="trackDescription">Track Description:</label>
+              <br>
+              <p>{{ track.description }}</p>
+            </div>
+            <a (click)="closeViewTrackDetailsPopUp()">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              Close
+            </a>
+          </form>
+        </div>
+
+
+        <!--Edit Track Popup  -->
+        <div class="login-box" *ngIf="showEditTrackPopup">
+          <h2>Edit Track</h2>
+          <form>
+            <div class="user-box">
+              <label for="newTitle">New Track Title</label>
+              <br>
+              <input type="text" [(ngModel)]="newTitle" name="newTitle" class="form-control mb-4"
+                placeholder="Enter new track title">
+            </div>
+            <br>
+
+            <div class="user-box">
+              <label for="newDescription">New Track Description</label>
+              <br>
+              <textarea [(ngModel)]="newDescription" name="newDescription" class="form-control mb-4"
+                placeholder="Enter new track description"></textarea>
+            </div>
+
+            <div class="user-box">
+              <label for="courseImage">Select New Track Image:</label>
+              <br><br>
+              <!-- Custom file input button -->
+              <label for="courseImage" class="custom-file-input">Choose File</label>
+              <!-- Display selected file name -->
+              <div class="selected-file" *ngIf="fileName">Selected File: {{ fileName }}</div>
+              <!-- Actual file input element -->
+              <input type="file" name="courseImage" id="courseImage" accept="image/*" (change)="onFileSelected($event)"
+                required>
+            </div>
+            <a (click)="updateTrack()">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              Edit Track
+            </a>
+            <a (click)="closeEditTrackPopup()">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              Close
+            </a>
+          </form>
+        </div>
+
+
+        <!--Delete Track Popup  -->
+        <div class="login-box" *ngIf="showDeleteTrackPopup">
+          <h2>Delete Track</h2>
+          <form>
+            <div class="user-box">
+              <p> Are you sure that you want to delete this track</p>
+            </div>
+            <a (click)="deleteTrack()">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              Delete Track
+            </a>
+            <a (click)="closeDeleteTrackPopUp()">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              Close
+            </a>
+          </form>
+        </div>
+
+        <!--View TrackILO details  -->
+        <div class="login-box" *ngIf="showViewTrackILODetailsPopUp">
+          <h2>View TrackILO</h2>
+          <form>
+
+            <div class="user-box">
+              <label for="selectTrackIlo">Select Track ILO:</label>
+              <br>
+              <select id="selectTrackIlo" [(ngModel)]="selectedTrackIloIndex" name="selectTrackIlo">
+                <option *ngFor="let ilo of trackIlos; let i = index" [value]="i">{{ 'Track ILO ' + (i+1) }}</option>
+              </select>
+            </div>
+
+            <div *ngIf="selectedTrackIloIndex !== null && trackIlos[selectedTrackIloIndex]">
+              <div class="user-box">
+                <label for="trackIloOutcome">Track ILO Outcome:</label>
+                <br>
+                <p>{{ trackIlos[selectedTrackIloIndex].trackOutcome }}</p>
+              </div>
+              <div class="user-box">
+                <label for="trackIloType" >Track ILO Type:</label>
+                <br>
+                <p >{{  trackIlos[selectedTrackIloIndex].trackType }}</p>
+              </div>
+              <div class="user-box">
+                <label for="trackIloDescription">Track ILO Description:</label>
+                <br>
+                <p >{{ trackIlos[selectedTrackIloIndex].trackDescription }}</p>
+              </div>
+            </div>
+           
+            <a (click)="closeViewTrackILODetailsPopUp()">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              Close
+            </a>
+          </form>
+        </div>
+
+
+
+        <!--Add TrackILO Popup  -->
+        <div class="login-box" *ngIf="showAddTrackILoPopup">
+          <h2>Add TrackILO</h2>
+          <form>
+            <div class="user-box">
+              <label for="trackOutcome">Track Outcome:</label>
+              <br>
+              <input type="text" [(ngModel)]="trackIlo.trackOutcome" name="trackOutcome" class="form-control mb-4"
+                placeholder="Enter track Outcome">
+            </div>
+            <br>
+
+            <div class="user-box">
+              <label for="trackType">Track Type:</label>
+              <br>
+              <input type="text" [(ngModel)]="trackIlo.trackType" name="trackType" class="form-control mb-4"
+                placeholder="Enter track type">
+            </div>
+
+            <div class="user-box">
+              <label for="trackIloDescription">TrackILO Description:</label>
+              <br><br>
+              <textarea [(ngModel)]="trackIlo.trackDescription" name="trackIloDescription" class="form-control mb-4"
+                placeholder="Enter Track Ilo Description"></textarea>
+            </div>
+            <a (click)="addTrackIlo()">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              Add TrackILO
+            </a>
+            <a (click)="closeAddTrackILoPopUp()">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              Close
+            </a>
+          </form>
+        </div>
+
+        <!--Edit TrackILO Popup  -->
+        <div class="login-box" *ngIf="showEditTrackILoPopup">
+          <h2>Edit TrackILO</h2>
+          <form>
+            <div class="user-box">
+              <label for="selectTrackIlo">Select Track ILO:</label>
+              <br>
+              <select id="selectTrackIlo" [(ngModel)]="selectedTrackIloIndex" name="selectTrackIlo">
+                <option *ngFor="let ilo of trackIlos; let i = index" [value]="i">{{ 'Track ILO ' + (i+1) }}</option>
+              </select>
+            </div>
+            <br>
+            <div *ngIf="selectedTrackIloIndex !== null && trackIlos[selectedTrackIloIndex]">
+              <div class="user-box">
+                <label for="trackOutcome">Track Outcome:</label>
+                <br>
+                <input type="text" [(ngModel)]="trackIlos[selectedTrackIloIndex].trackOutcome" name="trackOutcome"
+                  class="form-control mb-4" placeholder="Enter new track Outcome">
+              </div>
+
+              <div class="user-box">
+                <label for="trackIloDescription">Track ILO Description:</label>
+                <br><br>
+                <textarea [(ngModel)]="trackIlos[selectedTrackIloIndex].trackDescription" name="trackIloDescription"
+                  class="form-control mb-4" placeholder="Enter new track ILo Description"></textarea>
+              </div>
+            </div>
+            <a (click)="updateTrackILO()">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              Edit TrackILO
+            </a>
+            <a (click)="closeEditTrackILoPopUp()">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              Close
+            </a>
+          </form>
+        </div>
+
+        <!--Delete TrackILO Popup  -->
+        <div class="login-box" *ngIf="showDeleteTrackILOPopup">
+          <h2>Delete TrackILO</h2>
+          <form>
+            <div class="user-box">
+              <label for="selectTrackIlo">Select Track ILO:</label>
+              <br>
+              <select id="selectTrackIlo" [(ngModel)]="selectedTrackIloIndex" name="selectTrackIlo">
+                <option *ngFor="let ilo of trackIlos; let i = index" [value]="i">{{ 'Track ILO ' + (i+1) }}</option>
+              </select>
+            </div>
+            <br>
+            <div *ngIf="selectedTrackIloIndex !== null && trackIlos[selectedTrackIloIndex]">
+              <div class="user-box">
+                <p> Are you sure that you want to delete this track ILO</p>
+              </div>
+            </div>
+            <a (click)="deleteTrackIlo()">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              Delete Track
+            </a>
+            <a (click)="closeDeleteTrackILOPopUp()">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              Close
+            </a>
+          </form>
+        </div>
+
+
+
+
+
+
+
+
+
+      </div>
+
+      <h1 class="trackCourses">&nbsp;&nbsp;&nbsp;Track Courses</h1>
+      <br>
+      <div class="Course-Topics-two-column-container">
+
+        <div class="cards">
+          <div class="card card-3" *ngFor="let course of courses" (click)="navigateToCourseView(track.trackId, course.courseId)">>
+            <h2 class="card__title"> <i class="fa-solid fa-book-open"></i>{{ course.courseName }}</h2>
+            <h3 class="card__title"> <i class="fa-solid fa-book-open"></i>Hours : {{ course.courseHours }}</h3>
+            <h3 class="card__title"> <i class="fa-solid fa-book-open"></i>Level : {{ course.courseLevel }}</h3>
+            <p class="card__apply">
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="userData.role === 'student'">
+    <br><br><br><br><br><br><br>
+    <div class='course-topics'>
+      <div class="trackTitle">
+        <h2>{{ track.title }}</h2>
+      </div>
+      <br>
+
+      <div class="announcement">
+        <h2>Announcements</h2>
+        <p>Check out the latest topics below.</p>
+      </div>
+      <br><br>
+
+      <h1 class="trackCourses">&nbsp;&nbsp;&nbsp;Track Courses</h1>
+      <br>
+      <div class="Course-Topics-two-column-container">
+
+        <div class="cards">
+          <div class="card card-3" *ngFor="let course of courses"(click)="navigateToCourseView(track.trackId, course.courseId)">>
+            <h2 class="card__title"> <i class="fa-solid fa-book-open"></i>{{ course.courseName }}</h2>
+            <h3 class="card__title"> <i class="fa-solid fa-book-open"></i>Hours : {{ course.courseHours }}</h3>
+            <h3 class="card__title"> <i class="fa-solid fa-book-open"></i>Level : {{ course.courseLevel }}</h3>
+            <p class="card__apply">
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+</body>

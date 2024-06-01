@@ -1,0 +1,60 @@
+.container {
+    background-color: #f9f9f9;
+    color: #333;
+    padding: 20px;
+    border-radius: 5px;
+    height: 100vh; /* Set height to 100% of viewport height */
+    display: flex; /* Use flexbox for centering */
+    flex-direction: column; /* Stack children vertically */
+    justify-content: left; /* Center vertically */
+    align-items: left; /* Center horizontally */
+  }
+  
+  
+  h1 {
+    color: #333;
+  }
+  
+  .result-container {
+    margin-bottom: 20px;
+  }
+  
+  .answer-textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+  }
+  
+  .grade-input {
+    width: 100px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  .separator {
+    border-top: 1px solid #ccc;
+    margin: 20px 0;
+  }
+  
+  button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  .invalid-grade {
+    color: red;
+    font-size: 14px;
+  }
+  

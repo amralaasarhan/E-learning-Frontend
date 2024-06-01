@@ -1,0 +1,26 @@
+<header></header>
+
+
+<section class="dark">
+  <div class="container py-4">
+    <h1 class="h1 text-center" id="pageHeaderTitle">Track</h1>
+
+    <div class="courses-container">
+      <article class="postcard dark blue" *ngFor="let track of tracks">
+        <a class="postcard__img_link" href="#">
+          <img class="postcard__img" [src]="track.trackImage" alt="{{ track.title }}" />
+        </a>
+        <div class="postcard__text">
+          <h1 class="postcard__title blue"><a href="#">{{ track.title }}</a></h1>
+          <div class="postcard__preview-txt">{{ track.description }}</div>
+          <button (click)="enrollNow(track.trackId)" class="enroll-now-button">ENROLL NOW</button>
+
+        </div>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+
+<footer></footer>

@@ -1,0 +1,28 @@
+<main class="centered-container">
+  <h1>Update Profile</h1>
+  <div class="container">
+    <form (ngSubmit)="onSubmit()" [formGroup]="profileForm">
+      <label for="fields">Select Fields to Update:</label>
+      <select id="fields" formControlName="fields" multiple required (change)="toggleFieldValidators()">
+        <option value="FNAME">First Name</option>
+        <option value="LNAME">Last Name</option>
+        <option value="EMAIL">Email</option>
+        <option value="USERNAME">Username</option>
+        <option value="PASS">Password</option>
+        <option value="MOBILE">Mobile</option>
+        <option value="DOB">Birthday</option>
+      </select>
+
+      <!-- Input fields for the selected fields -->
+      <div id="selectedFields">
+        <div class="field" *ngFor="let field of ['FNAME', 'LNAME', 'EMAIL', 'USERNAME', 'PASS', 'MOBILE', 'DOB']"
+          [style.display]="isFieldSelected(field) ? 'block' : 'none'">
+          <label [for]="field">New {{ field | titlecase }}:</label>
+          <input type="text" [id]="field" [formControlName]="field" class="field-input" required>
+        </div>
+      </div>
+
+      <button type="submit" class="rounded-dark-red">Update</button>
+    </form>
+  </div>
+</main>

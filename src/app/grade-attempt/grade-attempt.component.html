@@ -1,0 +1,22 @@
+<div class="container">
+    <h1>Grade Student Assessment</h1>
+    <form (ngSubmit)="onSubmit()" #attemptForm="ngForm">
+      <ng-container *ngFor="let result of results; let i = index">
+        <div class="result-container">
+          <h2>ANSWER ID: {{ result.ANSWER_ID }}</h2>
+          <h2> QUESTION </h2>
+          <textarea class="answer-textarea" disabled>{{ result.QUESTION }}</textarea>
+          <label>STUDENT ANSWER </label><textarea class="answer-textarea" disabled>{{ result.ANSWER }}</textarea>
+          <label> Enter Grade : </label>
+          <input type="number" class="grade-input" [min]="0" [max]="result.WEIGHT * result.GRADE / totalWeight"
+            [(ngModel)]="result.grade" name="grade{{ i }}" />
+          <div *ngIf="isInvalidGrade(result)">
+            Please enter a valid grade between 0 and {{ result.WEIGHT * result.GRADE / totalWeight }}.
+          </div>
+        </div>
+        <hr class="separator" *ngIf="i !== results.length - 1" />
+      </ng-container>
+      <button type="submit" [disabled]="attemptForm.invalid ">Submit</button>
+    </form>
+  </div>
+  

@@ -1,0 +1,33 @@
+.placement-test-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .placement-test-table th,
+  .placement-test-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .placement-test-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .submit-button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .submit-button:hover {
+    background-color: #45a049;
+  }
+  

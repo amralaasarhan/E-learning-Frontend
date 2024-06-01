@@ -1,0 +1,26 @@
+<div class="ag-format-container">
+    <h1 class="ag-title">Are you familiar with any of these courses? </h1>
+    <div class="ag-courses_box">
+      <div class="ag-courses_item" *ngFor="let course of courses">
+        <label class="ag-courses-item_label">
+          <div class="ag-courses-item_content">
+            <img [src]="course.courseImage" alt="Course Image" class="ag-courses-item_image">
+            <div class="ag-courses-item_info">
+                <input class="ag-courses-item_link" type="checkbox" (change)="onCourseSelected(course.courseId)" > <label style="color: aliceblue;">Take Placement Test</label>
+                <h2 class="ag-courses-item_title">{{ course.courseName }}</h2>
+
+
+              <div class="ag-courses-item_details">
+          
+              </div>
+            </div>
+
+          </div>
+        </label>
+      </div>
+    </div>
+    <button (click)="skipPlacementTest()" class="ag-courses-item_button">Skip Placement Test</button>
+
+    <button (click)="takePlacementTest()" [disabled]="selectedCourses.length === 0" class="take-placement-test-button">Take Placement Test</button>
+  </div>
+  

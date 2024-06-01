@@ -1,0 +1,64 @@
+.add-details-container {
+    width: 80%;
+    margin: 0 auto;
+    /* margin-top: 8%; */
+    padding: 20px;
+    /* background-color:; */
+    box-shadow: 0 4px 8px 0 rgba(82, 80, 80, 0.2);
+    border-radius: 5px;
+   }
+   
+   .general-info, .add-questions-section, .additional-details {
+    margin-bottom: 20px;
+   }
+   
+   h2{
+    margin-top: 10%;
+    margin-bottom:5%;
+   }
+   h2, h3 {
+    color:white;
+   }
+   
+   form {
+    display: flex;
+    flex-direction: column;
+   }
+   
+   label {
+    margin-top: 10px;
+    color: white;
+   }
+   
+   input, textarea {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+   }
+   
+   button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: rgb(104, 9, 9);
+    margin-left: 5%;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+   }
+   
+   button:hover {
+    background-color:rgb(94, 8, 8);
+   }
+
+   input[type="file"] {
+    margin-top: 20px ;
+    margin-bottom: 10px;
+    color: aliceblue;
+   }
+   
+   p {
+    font-size: 14px;
+    color: #32549e;
+   }

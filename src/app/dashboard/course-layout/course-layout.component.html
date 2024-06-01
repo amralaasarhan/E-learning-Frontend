@@ -1,0 +1,254 @@
+<header class="header-area header-sticky">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <nav class="main-nav">
+          <!-- ***** Logo Start ***** -->
+          <a href="index.html" class="logo">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Career Mentorship
+          </a>
+          <ul class="nav">
+            <li class="scroll-to-section"><a href="./supervisor-dashboard">Home</a></li>
+            <li class="scroll-to-section"><a href="./messages">My Messages</a></li>
+            <li class="has-sub">
+              <a href="javascript:void(0)"> made by me </a>
+              <ul class="sub-menu">
+                <li class="scroll-to-section"><a href="./supervisorTracks"> Tracks </a> </li>
+                <li class="scroll-to-section"><a href="/course"> Courses</a></li>
+              </ul>
+            </li>
+            <li class="has-sub">
+              <a href="javascript:void(0)">My Account</a>
+              <ul class="sub-menu">
+                <li class="scroll-to-section"><a href="/updateProfile"> Update Account </a> </li>
+                <li class="scroll-to-section"><a href="/delete-user"> Delete Account</a></li>
+                <li class="scroll-to-section"><a href="./logout">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="heading-page header-text" id="top">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h2>{{ (course?.courseName) }}</h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="upcoming-meetings" id="meetings" style="height: 100vh; overflow-y: auto;">
+  <div class="container">
+    <div class="row">
+      <aside class="sidebar col-lg-3">
+        <nav class="sidebar-nav">
+          <br><br> <br><br><br>
+          <ul>
+            <li>
+              <a><span class="gg--details-more"></span> <span class=""> Course Topics</span> </a>
+              <ul class="nav-flyout">
+                <br><br> <br><br><br>
+                <li>
+                  <a (click)="openPopupAddCourseTopic()"><i class="ion-ios-flame-outline"></i>Add Course Topic</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a><span class="gg--details-more"></span> <span class=""> Course Details</span></a>
+              <ul class="nav-flyout">
+                <br><br> <br><br><br>
+                <li>
+                  <a (click)="openPopupEditCourse()"><i class="ion-ios-alarm-outline"></i>Edit Course</a>
+                </li>
+                <li>
+                  <a (click)="openPopupDeleteCourse()"><i class="ion-ios-cog-outline"></i>Delete Course</a>
+                </li>
+                <li>
+                  <a (click)="openPopUpAddCourseILo()"><i class="ion-ios-alarm-outline"></i>Add Course ILo</a>
+                </li>
+                <li>
+                  <a (click)="openPopUpEditCourseILo()"><i class="ion-ios-cog-outline"></i>Edit Course ILo</a>
+                </li>
+                <li>
+                  <a (click)="openPopUpDeleteCourseILo()"><i class="ion-ios-cog-outline"></i>Delete Course ILo</a>
+                </li>
+                <li>
+                  <a (click)="openPopUpViewCourseDetails()"><i class="ion-ios-cog-outline"></i>View Course Details</a>
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              <a><span class="gg--details-more"></span> <span class=""> Course Assessment</span></a>
+              <ul class="nav-flyout">
+                <br><br> <br><br><br>
+                <li>
+                  <a (click)="openPopupAddAssessment()"><i class="ion-ios-alarm-outline"></i>Add Assessment</a>
+                </li>
+
+                <li>
+                  <a href="./view-all-assessments"><span class="carbon--view-filled"></span> View All Assessment</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="popup-container wider" *ngIf="showPopupEditCourseILo">
+          <h2>Edit Course ILo</h2>
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label for="courseOutcome">Course Outcome:</label>
+              <input type="text" [(ngModel)]="courseIlo.courseOutcome" name="courseOutcome" class="form-control mb-4"
+                placeholder="Enter Course Outcome">
+            </div>
+            <div class="form-group">
+              <label for="courseType">Course Type:</label>
+              <textarea [(ngModel)]="courseIlo.courseType" name="courseType" class="form-control mb-4"
+                placeholder="Enter Course type"></textarea>
+            </div>
+            <div class="button-group">
+              <button class="btn signin" (click)="updateCourseILO()">Edit Course ILo</button>
+              <button class="popup-close" (click)="closePopupEditCourseILo()">Close</button>
+            </div>
+          </form>
+        </div>
+
+
+        <div class="popup-container wider" *ngIf="showPopupViewCourseDetails">
+          <h2 class="text-center mb-4">View Course Details</h2>
+          <form class="form-horizontal">
+            <!-- Select Course ILO -->
+            <div class="form-group mb-3">
+              <label for="selectCourseIlo" class="font-weight-bold">Select Course ILO:</label>
+              <select id="selectCourseIlo" class="form-control" [(ngModel)]="selectedCourseIloIndex"
+                (change)="onSelectCourseIlo()">
+                <option *ngFor="let ilo of courseIlos; let i = index" [value]="i">{{ 'Course ILO ' + (i+1) }}</option>
+              </select>
+            </div>
+
+            <!-- Course Outcome -->
+            <div *ngIf="selectedCourseIloIndex !== null && courseIlos.length > 0" class="form-group mb-3">
+              <div class="viewLabel-and-data">
+                <label for="courseIloOutcome" class="font-weight-bold">Course Outcomes:</label>
+                <p class="font-size-lg">{{ courseIlos[selectedCourseIloIndex].courseOutcome }}</p>
+              </div>
+            </div>
+
+            <!-- Course ILO Type -->
+            <div *ngIf="selectedCourseIloIndex !== null && courseIlos.length > 0" class="form-group mb-3">
+              <div class="viewLabel-and-data">
+                <label for="courseIloType" class="font-weight-bold">Course ILO Type:</label>
+                <p class="font-size-lg">{{ courseIlos[selectedCourseIloIndex].courseType }}</p>
+              </div>
+            </div>
+
+            <!-- Course ILO Description -->
+            <div *ngIf="selectedCourseIloIndex !== null && courseIlos.length > 0" class="form-group mb-3">
+              <div class="viewLabel-and-data">
+                <label for="courseIloDescription" class="font-weight-bold">Course ILO Description:</label>
+                <p class="font-size-lg">{{ courseIlos[selectedCourseIloIndex].courseIloDescription }}</p>
+              </div>
+            </div>
+
+
+            <!-- Close Button -->
+            <div class="button-group">
+              <button class="btn btn-secondary popup-close" (click)="closePopUpViewCourseDetails()">Close</button>
+            </div>
+
+          </form>
+        </div>
+
+
+
+        <div class="popup-container wider" *ngIf="showPopupAddCourseTopic">
+          <h2>Add Course Topic</h2>
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label for="topicName">Topic Name</label>
+              <input type="text" [(ngModel)]="courseTopic.topicName" name="topicName" class="form-control mb-4"
+                placeholder="Enter topic name">
+            </div>
+            <!-- Select Course ILO -->
+            <div class="form-group mb-3">
+              <label for="selectCourseIlo" class="font-weight-bold">Select Course ILO:</label>
+              <select id="selectCourseIlo" name="selectCourseIlo" class="form-control"
+                [(ngModel)]="selectedCourseIloIndex" (change)="onSelectCourseIlo()">
+                <option *ngFor="let ilo of courseIlos; let i = index" [value]="i">{{ 'Course ILO ' + (i+1) }}</option>
+              </select>
+            </div>
+
+
+            <!-- File Upload -->
+            <div class="form-group">
+              <label for="courseFile">Select File:</label>
+            <input type="file" name="courseFile" id="courseFile" accept="file/*" (change)="onCourseFileSelected($event)"
+              required>
+              <div *ngIf="courseFileName">Selected File: {{ courseFileName }}</div>
+            </div>
+
+            <!-- Button group -->
+            <div class="button-group">
+              <button class="btn signin"
+                (click)="selectedCourseIloIndex !== null && addCourseTopic(courseIlos[selectedCourseIloIndex].courseIloId)">Add
+                Topic</button>
+              <button class="popup-close" (click)="closePopupAddCourseTopic()">Close</button>
+            </div>
+            <!-- End of button group -->
+          </form>
+        </div>
+
+
+
+
+        <div class="popup-container wider" *ngIf="showPopupAddAssessment">
+          <h2>Add Assessment</h2>
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label for="assessmentType">Assessment Type</label>
+              <input type="text" [(ngModel)]="assesmentType" name="assessmentType" class="form-control mb-4"
+                placeholder="Enter assessment type" required>
+            </div>
+            <!-- Select Course ILO -->
+            <div class="form-group mb-3">
+              <label for="selectCourseIlo" class="font-weight-bold">Select Course ILO:</label>
+              <select id="selectCourseIlo" name="selectCourseIlo" class="form-control"
+                [(ngModel)]="selectedCourseIloIndex" (change)="onSelectCourseIlo()">
+                <option *ngFor="let ilo of courseIlos; let i = index" [value]="i">{{ 'Course ILO ' + (i+1) }}</option>
+              </select>
+            </div>
+            <div class="button-group">
+              <button class="btn signin"
+                (click)="selectedCourseIloIndex !== null && addAssessment(courseIlos[selectedCourseIloIndex].courseIloId)">Add
+                Assessment</button>
+              <button class="popup-close" (click)="closePopupAddAssessment()">Close</button>
+            </div>
+          </form>
+        </div>
+
+
+      </div>
+    </div>
+</section>

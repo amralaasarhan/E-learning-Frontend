@@ -1,0 +1,28 @@
+<h2>Submissions</h2>
+<div *ngIf="submissions" class="submissions-table">
+  <table>
+    <thead>
+      <tr>
+        <th>Student ID</th>
+        <th>File Name</th>
+        <th>Grade</th>
+        <th>Total</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let submission of submissions">
+          <td>{{ submission.submissionData.studentID }}</td>
+          <td>{{ submission.submissionData.fileName }}</td>
+          <td><input type="number" [(ngModel)]="submission.submissionData.grade" placeholder="Grade" required></td>
+          <td><input type="number" [(ngModel)]="submission.submissionData.total" placeholder="Total" required></td>
+          <td>
+            <button (click)="addGrade(submission.submissionData.submissionID)" [disabled]="!isValid(submission)">
+              Add Grade
+            </button>
+          </td>
+        </tr>
+      </tbody>
+      
+  </table>
+</div>

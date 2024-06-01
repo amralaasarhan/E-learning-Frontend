@@ -1,0 +1,116 @@
+<header class="header-area header-sticky">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="main-nav">
+            <!-- ***** Logo Start ***** -->
+            <a href="index.html" class="logo">
+              Career Mentorship
+            </a>
+            <ul class="nav">
+              <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+              <li class="scroll-to-section"><a href="">My Messages</a></li>
+              <li class="has-sub">
+                <a href="javascript:void(0)"> made by me </a>
+                <ul class="sub-menu">
+                  <li class="scroll-to-section"><a href="./supervisorTracks"> Tracks </a> </li>
+                  <li class="scroll-to-section"><a href="/course"> Courses</a></li>
+                </ul>
+              </li>
+              <li class="has-sub">
+                <a href="javascript:void(0)">My Account</a>
+                <ul class="sub-menu">
+                  <li class="scroll-to-section"><a href="/updateProfile"> Update Account </a> </li>
+                  <li class="scroll-to-section"><a href="/delete-user"> Delete Account</a></li>
+                  <li class="scroll-to-section"><a href="./logout">Logout</a></li>
+                </ul>
+              </li>
+            </ul>
+            <a class='menu-trigger'>
+              <span>Menu</span>
+            </a>
+            <!-- ***** Menu End ***** -->
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<!-- <div class="add-details-container">
+    
+    <h2>Addin new </h2>
+    <div class="general-info">
+       <h3>General Information</h3>
+
+       <form>
+         <label for="assessmentName">Name:</label>
+         <input type="text" id="assessmentName" [(ngModel)]="assessment.name" name="assessmentName">
+         <label for="assessmentDescription">Description:</label>
+         <textarea id="assessmentDescription" [(ngModel)]="assessment.description" name="assessmentDescription"></textarea>
+       </form>
+    </div>
+    <div class="add-questions-section">
+       <h3>Adding Questions</h3>
+       <button (click)="navigateToAddQuestions()">Add Questions</button>
+    </div>
+    <div class="additional-details">
+       <h3>Additional Details</h3>
+       <form>
+         <label for="timing">Timing:</label>
+         <input type="text" id="timing" [(ngModel)]="assessment.timing" name="timing">
+         <label for="deadline">Deadline:</label>
+         <input type="date" id="deadline" [(ngModel)]="assessment.deadline" name="deadline">
+         <label for="grade">Grade:</label>
+         <input type="number" id="grade" [(ngModel)]="assessment.grade" name="grade">
+       </form>
+    </div>
+   </div> -->
+
+   <div class="add-details-container">
+    <h2>Addin New Assessment</h2>
+    <!-- General Information -->
+    <div class="general-info">
+       <h3>General Information</h3>
+       <form>
+         <label for="assessmentName">Name:</label>
+         <input type="text" id="assessmentName" [(ngModel)]="assessment.name" name="assessmentName">
+         <label for="assessmentDescription">Description:</label>
+         <textarea id="assessmentDescription" [(ngModel)]="assessment.description" name="assessmentDescription"></textarea>
+       </form>
+    </div>
+    <!-- Adding Questions -->
+    <div class="add-questions-section" *ngIf="assesmentType.toLowerCase() !== 'assignment'">
+       <h3>Adding Questions</h3>
+       <select [(ngModel)]="selectedAction" id="actionSelect">
+         <option value="">Select Action</option>
+         <option value="addNew">Add New Question</option>
+         <option value="addFromQB">Add from Question Bank</option>
+       </select>
+       <button (click)="navigateToSelectedAction()">Add Questions</button>
+    </div>
+
+
+<!-- Uploading Assignment -->
+<div class="upload-assignment-section" *ngIf="assesmentType.toLowerCase() === 'assignment'">
+  <h3>Uploading Assignment</h3>
+  <form (submit)="onSubmit()" #uploadForm="ngForm">
+    <input type="file" name="file" (change)="onFileSelected($event)" required>
+    <p *ngIf="selectedFile">Selected file: {{selectedFile.name}}</p>
+    <button type="submit">Upload File</button>
+   </form>
+ </div>
+
+
+    <!-- Additional Details -->
+    <div class="additional-details">
+       <h3>Additional Details</h3>
+       <form>
+         <label for="timing">Timing:</label>
+         <input type="text" id="timing" [(ngModel)]="assessment.timing" name="timing">
+         <label for="deadline">Deadline:</label>
+         <input type="date" id="deadline" [(ngModel)]="assessment.deadline" name="deadline">
+         <label for="grade">Grade:</label>
+         <input type="number" id="grade" [(ngModel)]="assessment.grade" name="grade">
+       </form>
+    </div>
+</div>

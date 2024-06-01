@@ -1,0 +1,646 @@
+.main-container {
+  padding: 30px;
+}
+
+.heading {
+  text-align: center;
+}
+
+.heading__title {
+  font-weight: 600;
+}
+
+.heading__credits {
+  margin: 10px 0px;
+  color: #888888;
+  font-size: 25px;
+  transition: all 0.5s;
+}
+
+
+.a{
+color:white;
+
+}
+.a:hover{
+  color:white;
+  
+  }
+
+.heading__link {
+  text-decoration: none;
+}
+
+.heading__credits .heading__link {
+  color: inherit;
+}
+
+/* CARDS */
+.cards {
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 auto;
+  /* Center the cards horizontally */
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-start;
+  /* Align cards to the left side */
+  gap: 20px;
+}
+
+.Course-Topics {
+
+  padding-left: 300px;
+
+}
+
+.Course-Topics-two-column-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 15px;
+  /* Optional: Add padding to container */
+}
+
+.actions-grid {
+  background-color: transparent;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* 2 columns */
+  gap: 20px;
+  /* Gap between buttons */
+  border-radius: 10px;
+  /* Rounded corners for the container */
+}
+
+.trackTitle {
+  color: white;
+  font-size: x-large;
+  padding: left 500px;
+  ;
+
+}
+
+.card {
+  height: 150px;
+  width: 600px;
+  /* Adjust width with margin considered */
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  /* Ensure padding and border are included in the width */
+  padding: 15px;
+  /* Optional: Add padding inside the card */
+  background-color: #f0f0f0;
+  /* Optional: Add background color to distinguish cards */
+  border-radius: 5px;
+  /* Optional: Add border radius for rounded corners */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  /* Optional: Add box shadow for depth */
+  transition: all 0.2s;
+
+}
+
+.card:hover {
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
+  transform: scale(1.01);
+}
+
+.card__link,
+.card__exit,
+.card__icon {
+  position: relative;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.card__link::after {
+  position: absolute;
+  top: 25px;
+  left: 0;
+  content: "";
+  width: 0%;
+  height: 3px;
+  background-color: rgba(255, 255, 255, 0.6);
+  transition: all 0.5s;
+}
+
+.card__link:hover::after {
+  width: 100%;
+}
+
+.card__exit {
+  grid-row: 1/2;
+  justify-self: end;
+}
+
+.card__icon {
+  grid-row: 2/3;
+  font-size: 30px;
+}
+
+.card__title {
+  grid-row: 3/4;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+.card__apply {
+  grid-row: 4/5;
+  align-self: center;
+}
+
+/* CARD BACKGROUNDS */
+
+.card-3 {
+  background: rgb(0, 0, 0);
+}
+
+
+.card-4 {
+  background: rgb(139, 72, 114);
+}
+.card-5 {
+  background: rgb(33, 99, 186);
+}
+.card-6 {
+  background: rgb(192, 101, 31);
+}
+.card-7 {
+  background: rgb(69, 2, 63);
+}
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .cards {
+    width: 100%;
+    /* Set width to 100% for smaller screens */
+    margin-left: 0;
+    /* Remove left margin for smaller screens */
+  }
+
+  .Course-Topics {
+    grid-template-columns: repeat(1, 1fr);
+    /* For smaller screens, display one column */
+  }
+}
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:600);
+
+.sidenav {
+  position: fixed;
+  width: 280px;
+  height: 100%;
+  background-color: #000000;
+}
+
+.sidenav .main-buttons {
+  list-style-type: none;
+  margin: 64px 0;
+  padding: 0;
+  color: #fff;
+}
+
+.trackCourses {
+  color: white;
+  font-size: 30px;
+  padding: left 50px;
+
+}
+
+.sidenav .main-buttons li {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.sidenav .main-buttons>li {
+  padding: 16px 52px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.sidenav .main-buttons>li .fa {
+  position: absolute;
+  left: 12px;
+  color: #1a1b1c;
+}
+
+.sidenav .main-buttons>li:hover,
+.sidenav .main-buttons>li:active,
+.sidenav .main-buttons>li:focus {
+  background-color: #1a1b1c;
+  cursor: pointer;
+}
+
+.sidenav .main-buttons>li:hover .hidden,
+.sidenav .main-buttons>li:active .hidden,
+.sidenav .main-buttons>li:focus .hidden {
+  width: 228px;
+}
+
+.hidden {
+  width: 0;
+  height: 100%;
+  padding: 64px 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  overflow: hidden;
+  list-style-type: none;
+  background-color: #1a1b1c;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.hidden li {
+  padding: 16px 24px;
+}
+
+.hidden li:hover,
+.hidden li:active,
+.hidden li:focus {
+  background-color: #2a2c2d;
+}
+
+
+html,
+body {
+  background-image: url('../../assets/images/pinkBlueBG.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.announcement {
+  width: 1240px;
+  background-color: #ffffff;
+  /* White background */
+  border-radius: 10px;
+  /* Rounded borders */
+  padding: 10px;
+  /* Padding for content */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Box shadow for depth */
+  margin-bottom: 20px;
+  /* Margin to separate from the Course-Topics container */
+}
+
+.popups {
+  width: 1240px;
+  margin:0;
+  padding:0;
+  font-family: sans-serif;
+  background: linear-gradient(#000000, #141619);
+  border-radius: 10px;
+  /* Rounded borders */
+  padding: 10px;
+  /* Padding for content */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Box shadow for depth */
+  height: 650px;
+  margin-bottom: 20px;
+  /* Margin to separate from the Course-Topics container */
+} 
+
+
+.login-box {
+  position: absolute;
+  top: 63%;
+  left: 54.5%;
+  width: 1240px;
+  height: 350px;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  background: rgba(0,0,0,.5);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  border-radius: 10px;
+}
+
+.login-box h2 {
+  margin: 0 0 30px;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+}
+
+.login-box .user-box {
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Align items vertically */
+  margin-bottom: 15px; 
+}
+
+/* Style for file input */
+input[type="file"] {
+  /* Hide default file input button */
+  display: none;
+}
+
+/* Style for custom file input button */
+.custom-file-input {
+  background-color: #cd5ecb; /* Purple background color */
+  color: #fff; /* Text color */
+  padding: 10px 15px; /* Adjust padding as needed */
+  border-radius: 5px; /* Rounded corners */
+  border: none; /* Remove border */
+  cursor: pointer; /* Show pointer cursor on hover */
+}
+
+
+
+/* Style for selected file name display */
+.selected-file {
+  color: #ffffff; /* Purple color */
+  font-weight: bold; /* Bold text */
+}
+
+
+.login-box .user-box select {
+  flex: 1; /* Input field takes up remaining space */
+  padding: 10px;
+  font-size: 20px;
+  color: #979999;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+
+.login-box .user-box input {
+  flex: 1; /* Input field takes up remaining space */
+  padding: 10px;
+  font-size: 20px;
+  color:   #979999;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+
+.login-box .user-box textarea {
+  flex: 1; /* Input field takes up remaining space */
+  padding: 10px;
+  font-size: 20px;
+  color:#979999;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+
+.login-box .user-box label {
+  font-size: 20px;
+  color: #fff;
+  width: 150px; /* Adjust width of label */
+  text-align: left; /* Align label text to the right */
+  margin-right: 10px; /* Add some space between label and input */
+}
+
+.login-box .user-box li {
+  font-size: 20px;
+  color: #fff;
+  width: 550px; /* Adjust width of label */
+  text-align: left; /* Align label text to the right */
+  margin-right: 10px; /* Add some space between label and input */
+}
+.login-box .user-box p {
+  font-size: 20px;
+  color: #fff;
+  width: 550px; /* Adjust width of label */
+  text-align: left; /* Align label text to the right */
+}
+
+.login-box .user-box img {
+  font-size: 20px;
+  color: #fff;
+  width:446px; 
+  height:236px;
+  text-align: left; /* Align label text to the right */
+}
+
+
+.login-box .user-box input:focus ~ label,
+.login-box .user-box input:valid ~ label {
+  top: -20px;
+  left: 0;
+  color: white;
+  font-size: 400px;
+}
+
+.login-box form a {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  color: white;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: .5s;
+  margin-top: 40px;
+  letter-spacing: 4px
+}
+
+.login-box a:hover {
+  color: white;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px  #020332,
+              0 0 25px   #020332,
+              0 0 50px   #020332,
+              0 0 100px  #020332;
+}
+
+.login-box a span {
+  position: absolute;
+  display: block;
+}
+
+.login-box a span:nth-child(1) {
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #cd5ecb);
+  animation: btn-anim1 1s linear infinite;
+}
+
+@keyframes btn-anim1 {
+  0% {
+    left: -100%;
+  }
+  50%,100% {
+    left: 100%;
+  }
+}
+
+.login-box a span:nth-child(2) {
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #cd5ecb);
+  animation: btn-anim2 1s linear infinite;
+  animation-delay: .25s
+}
+
+@keyframes btn-anim2 {
+  0% {
+    top: -100%;
+  }
+  50%,100% {
+    top: 100%;
+  }
+}
+
+.login-box a span:nth-child(3) {
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, transparent, #cd5ecb);
+  animation: btn-anim3 1s linear infinite;
+  animation-delay: .5s
+}
+
+@keyframes btn-anim3 {
+  0% {
+    right: -100%;
+  }
+  50%,100% {
+    right: 100%;
+  }
+}
+
+.login-box a span:nth-child(4) {
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, #cd5ecb);
+  animation: btn-anim4 1s linear infinite;
+  animation-delay: .75s
+}
+
+@keyframes btn-anim4 {
+  0% {
+    bottom: -100%;
+  }
+  50%,100% {
+    bottom: 100%;
+  }
+}
+
+
+
+
+.progress[value] {
+  /* Get rid of the default appearance */
+  appearance: none;
+  
+  /* This unfortunately leaves a trail of border behind in Firefox and Opera. We can remove that by setting the border to none. */
+  border: none;
+  
+  /* Add dimensions */
+  width: 100%; 
+  height: 20px;
+  
+  /* Although Firefox doesn't provide any additional pseudo class to style the progress element container, any style applied here works on the container. */
+  background-color: rgb(179, 28, 28);
+  border-radius: 3px;
+  box-shadow: 0 2px 3px rgba(136, 43, 43, 0.5) inset;
+  
+  /* Define gradient color for the progress bar */
+  background-image: linear-gradient(to right, #ff0000, #ffff00, #00ff00); /* Example gradient */
+  
+  /* Of all IE, only IE10 supports progress element that too partially. It only allows changing the background-color of the progress value using the 'color' attribute. */
+  color: rgb(131, 51, 228);
+  
+  position: relative;
+  margin: 0 0 1.5em; 
+}
+
+
+progress[value]::-webkit-progress-bar {
+	background-color: whiteSmoke;
+	border-radius: 3px;
+	box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
+}
+
+progress[value]::-webkit-progress-value {
+	position: relative;
+	
+	background-size: 35px 20px, 100% 100%, 100% 100%;
+	border-radius:3px;
+	
+	/* Let's animate this */
+	animation: animate-stripes 5s linear infinite;
+}
+
+@keyframes animate-stripes { 100% { background-position: -100px 0; } }
+
+/* Let's spice up things little bit by using pseudo elements. */
+
+progress[value]::-webkit-progress-value:after {
+	/* Only webkit/blink browsers understand pseudo elements on pseudo classes. A rare phenomenon! */
+	content: '';
+	position: absolute;
+	
+	width:5px; height:5px;
+	top:7px; right:7px;
+	
+	background-color: white;
+	border-radius: 100%;
+}
+
+/* Firefox provides a single pseudo class to style the progress element value and not for container. -moz-progress-bar */
+
+progress[value]::-moz-progress-bar {
+	/* Gradient background with Stripes */
+	background-image:
+	-moz-linear-gradient( 135deg,
+													 transparent,
+													 transparent 33%,
+													 rgba(0,0,0,.1) 33%,
+													 rgba(0,0,0,.1) 66%,
+													 transparent 66%),
+    -moz-linear-gradient( top,
+														rgba(255, 255, 255, .25),
+														rgba(0,0,0,.2)),
+     -moz-linear-gradient( left, #09c, #f44);
+	
+	background-size: 35px 20px, 100% 100%, 100% 100%;
+	border-radius:3px;
+	
+	/* Firefox doesn't support CSS3 keyframe animations on progress element. Hence, we did not include animate-stripes in this code block */
+}
+
+/* Fallback technique styles */
+.progress-bar {
+	background-color: whiteSmoke;
+	border-radius: 3px;
+	box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
+
+	/* Dimensions should be similar to the parent progress element. */
+	width: 100%; height:20px;
+}
+
+.progress-bar span {
+	background-color: royalblue;
+	border-radius: 3px;
+	
+	display: block;
+	text-indent: -9999px;
+}
+.disabled-link {
+  pointer-events: none;
+  color: gray;
+  text-decoration: none;
+}

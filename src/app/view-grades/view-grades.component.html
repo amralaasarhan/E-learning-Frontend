@@ -1,0 +1,24 @@
+<div class="container">
+    <h1>Student Grades</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Assessment Name</th>
+          <th>Assessment Type</th>
+          <th>Assessment Grade</th>
+          <th>Out Of(Total)</th>
+          <th>Grading Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let grade of grades">
+          <td>{{ grade.Assessment_Name }}</td>
+          <td>{{ grade.Assessment_Type }}</td>
+          <td>{{ grade.Assessment_Grade }}</td>
+          <td>{{grade.TOTAL}}</td>
+          <td>{{ grade.Grading_Status }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

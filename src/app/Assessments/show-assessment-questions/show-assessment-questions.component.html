@@ -1,0 +1,21 @@
+<!-- <div class="questions-container">
+    <div *ngFor="let question of questions" class="question-item">
+       <h3>{{ question.QUESTION }}</h3>
+       <p class="question-type">The {{ question.QUESTION_TYPE }}</p>
+       <p class="question-level">{{ question.QUESTION_LEVEL }}</p>
+    </div>
+   </div> -->
+
+   <!-- show-assessment-questions.component.html -->
+<div *ngIf="questions.length > 0; else noQuestions">
+   <h2>Questions for Assessment ID: {{ lastAssessmentId }}</h2>
+   <ul>
+      <li *ngFor="let question of questions">
+        {{ question.questionText }} <!-- Adjust this based on the structure of your question objects -->
+      </li>
+   </ul>
+  </div>
+  
+  <ng-template #noQuestions>
+   <p>No questions found for this assessment.</p>
+  </ng-template>

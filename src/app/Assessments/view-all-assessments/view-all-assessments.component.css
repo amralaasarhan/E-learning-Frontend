@@ -1,0 +1,61 @@
+.content-wrapper {
+    padding-top: 100px; /* Adjust this value to match your header's height */
+   }
+
+.assessments-list {
+    padding-top: 100px;
+    max-width: 800px; /* Adjust the width as needed */
+    margin: 0 auto; /* Center the list */
+    padding: 20px;
+    background-color: #f9f9f9; /* Light background color */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+   }
+   
+   .assessments-list h2 {
+    text-align: center; /* Center the title */
+    color: #333; /* Dark text color */
+    margin-bottom: 20px; /* Space below the title */
+   }
+   
+   .assessments-list ul {
+    list-style-type: none; /* Remove default list styling */
+    padding: 0;
+   }
+   
+   .assessments-list li {
+    padding: 10px;
+    border-bottom: 1px solid #eee; /* Light border between items */
+    &:last-child {
+       border-bottom: none; /* Remove border from the last item */
+    }
+   }
+
+   .assessments-list li {
+    display: flex; /* Use Flexbox */
+    justify-content: space-between; /* Align items to the left and right */
+    align-items: center; /* Center items vertically */
+    padding: 10px;
+    font-size: 20px; 
+    border-bottom: 1px solid #eee; /* Light border between items */
+}
+
+/* Style for the delete button */
+.assessments-list li button {
+    background-color:rgb(104, 9, 9);; /* Red background */
+    color: white; /* White text */
+    padding: 8px 16px; /* Padding */
+    border: none; /* No border */
+    cursor: pointer; /* Cursor pointer */
+    border-radius: 4px; /* Rounded corners */
+}
+
+.assessments-list li button:hover {
+    background-color: #d32f2f; 
+}
+   
+   /* Style for the assessment type text */
+   .assessments-list li span {
+    font-size: 16px; 
+    color: #666; /* Darker text color for the assessment type */
+   }

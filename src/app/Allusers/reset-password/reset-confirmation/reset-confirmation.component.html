@@ -1,0 +1,42 @@
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="card text-center" style="width: 300px">
+    <div class="card-header h5 text-white bg-primary">Password Reset</div>
+    <div class="card-body px-5">
+      <div *ngIf="!resetSuccess">
+        <!-- Password reset form -->
+        <div class="form-outline">
+          <input
+            type="password"
+            [(ngModel)]="newPassword"
+            id="newPassword"
+            class="form-control my-3"
+            placeholder="New Password"
+          />
+          <label class="form-label" for="newPassword">New Password</label>
+        </div>
+        <div class="form-outline">
+          <input
+            type="password"
+            [(ngModel)]="confirmPassword"
+            id="confirmPassword"
+            class="form-control my-3"
+            placeholder="Confirm Password"
+          />
+          <label class="form-label" for="confirmPassword"
+            >Confirm Password</label
+          >
+        </div>
+        <button class="btn btn-primary w-100" (click)="onSubmit()">
+          Reset Password
+        </button>
+        <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+      </div>
+
+      <div *ngIf="resetSuccess">
+        <!-- Success message or redirection -->
+        <h2>Password Reset Successful</h2>
+        <p>You can now <a href="/login">Sign In</a></p>
+      </div>
+    </div>
+  </div>
+</div>

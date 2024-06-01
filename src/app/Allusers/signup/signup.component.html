@@ -1,0 +1,82 @@
+<body>
+    <div class="wrapper">
+        <form>
+            <h2>Sign Up</h2>
+            <div class="input-field">
+                <label>First Name</label>
+                <br>
+                <input type="text" [(ngModel)]="fName" [ngModelOptions]="{standalone:true}" required>
+            </div>
+            <div class="input-field">
+                <label>Last Name</label>
+                <br>
+                <input type="text" [(ngModel)]="lName" [ngModelOptions]="{standalone:true}" required>
+            </div>
+            <div class="input-field">
+                <label>User Name</label>
+                <br>
+                <input type="text" [(ngModel)]="username" [ngModelOptions]="{standalone:true}" required>
+            </div>
+            <div class="input-field">
+                <label>Email</label>
+                <br>
+                <input type="text" [(ngModel)]="email" [ngModelOptions]="{standalone:true}" required>
+            </div>
+            <div class="input-field">
+                <label>Password</label>
+                <br>
+                <input type="password" [(ngModel)]="pass" [ngModelOptions]="{standalone:true}" required>
+            </div>
+
+        </form>
+        <form>
+            <br> <br>
+            <div class="input-field">
+                <label>Mobile Number</label>
+                <br>
+                <input type="text" [(ngModel)]="mobile" [ngModelOptions]="{standalone:true}" required>
+            </div>
+            <div class="input-field">
+                <label>Date of Birth</label>
+                <br>
+                <input type="date" [(ngModel)]="date" [ngModelOptions]="{standalone:true}" required>
+            </div>
+            <div class="input-field">
+                <label>UserType</label>
+                <br>
+                <select [(ngModel)]="userType" [ngModelOptions]="{standalone:true}" (change)="onUserTypeChange()"
+                    required>
+                    <option value="" disabled selected hidden>User Type</option>
+                    <option value="student">Student</option>
+                    <option value="expert">Expert</option>
+                    <option value="path_supervisor">Path Supervisor</option>
+                    <option value="instructor">Instructor</option>
+                    <option value="company_representative">Company Representative</option>
+                    <option value="admin">Admin</option>
+                </select>
+            </div>
+            <div *ngIf="userType === 'company_representative'">
+                <div class="input-field">
+                    <label>Company Name</label>
+                    <br>
+                    <input type="text" [(ngModel)]="companyName" [ngModelOptions]="{standalone:true}">
+                </div>
+            </div>
+            <div *ngIf="userType === 'expert'">
+                <div class="input-field">
+                    <label>Specialization</label>
+                    <br>
+                    <input type="text" [(ngModel)]="specialization" [ngModelOptions]="{standalone:true}">
+                </div>
+            </div>
+            <div class="forget">
+                <a href="/forgot-password">Forgot password?</a>
+            </div>
+            <button type="submit" (click)="signup()">Signup</button>
+            <div class="register">
+                <p>Do have an account? <a href="/login">Login</a></p>
+            </div>
+        </form>
+     
+    </div>
+</body>
